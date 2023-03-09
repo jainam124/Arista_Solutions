@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "devStart" : "nodemon app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.13",
+    "nodemon": "^2.0.21",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7"
   },

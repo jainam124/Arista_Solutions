@@ -5,114 +5,87 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
-    <title>Login</title>
-
-    <style>
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title>Arista Solutions</title>
 </head>
+<body>
 
-    <body>
-        <center>
-        <section class="h-full gradient-form bg-gray-200 md:h-screen">
-            <div class="container py-12 px-6 h-full">
-              <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
-                <div class="xl:w-10/12">
-                  <div class="block bg-white shadow-lg rounded-lg">
-                    <div class="lg:flex lg:flex-wrap g-0">
-                      <div class="lg:w-6/12 px-4 md:px-0">
-                        <div class="md:p-12 md:mx-6">
-                          <div class="text-center">
-                            <img
-                              class="mx-auto w-48 hover:shadow-lg transition duration-300 ease-in-out"
-                              src="images/arista_logo.jpg"
-                              alt="logo"
-                            />
-                            <h4 class="text-lg py-5 font-semibold mt-1 mb-12 pb-1">Arista Solutions</h4>
-                          </div>
-                          <form>
-                            <center>
-                                <p class="mb-4">Please login to your account</p>
-                            </center>
-                            
-                            <div class="mb-4">
-                              <input
-                                type="email"
-                                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                id="exampleFormControlInput1"
-                                placeholder="E-mail"
-                              />
-                            </div>
-                            <div class="mb-4">
-                              <input
-                                type="password"
-                                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus: focus:bg-white focus:border-blue-600 focus:outline-none"
-                                id="exampleFormControlInput1"
-                                placeholder="Password"
-                              />
-                            </div>
-
-                            <div class="text-center pt-1 mb-12 pb-1">
-                              
-                              <a class="w-full inline-block px-6 py-2.5 bg-blue-600 text-white font-medium 
-                                        text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700
-                                        hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none 
-                                        focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150
-                                        ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light"
-                                  href="#!" 
-                                  role="button">Login</a> <br><br>
-                              
-                              <!--
-                              <button
-                                class="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
-                                type="button"
-                                data-mdb-ripple="true"
-                                data-mdb-ripple-color="light"
-                                style="
-                                  background: linear-gradient(
-                                    to right,
-                                    #ee7724,
-                                    #d8363a,
-                                    #dd3675,
-                                    #b44593
-                                  );
-                                "> Log in</button>-->
-                                                        
-                              <a class="text-gray-500" href="#!">Forgot password?</a>
-                            </div>
-                            <div class="flex items-center justify-between pb-6">                    
-                              <p class="mx-5 mb-0 mr-2">Don't have an account?</p>
-                              <button
-                                type="button"
-                                class="inline-block mx-8 px-6 py-2 border-2 border-red-600 text-red-600 font-medium text-xs leading-tight uppercase rounded hover:bg-neutral-500 hover:bg-opacity-25 focus:outline-none focus:ring-0 transition duration-700 ease-in-out"
-                                data-mdb-ripple="true"
-                                data-mdb-ripple-color="light">
-                                Register
-                               </button>                                                             
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                      <div
-                        class="lg:w-6/12 flex items-center lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none"
-                        style="
-                          background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-                        "
-                      >
-                        <div class="text-white px-8 py-6 md:p-12 md:mx-6">
-                          <h4 class="text-3xl font-semibold mb-6">Kill Fire Before It Kills You</h4>
-                          <p class="text-2xl">
-                            Arista Solutions is a distributor of wide range of fire protection equipments, such as Fire Hoses, Couplings, Fire hydrant and sprinkler systems, Fire Pumps, etc and related ancillaries.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div class="relative flex h-16 items-center justify-between">
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+              <!-- Mobile menu button-->
+              <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <!--
+                  Icon when menu is closed.
+      
+                  Menu open: "hidden", Menu closed: "block"
+                -->
+                <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <!--
+                  Icon when menu is open.
+      
+                  Menu open: "block", Menu closed: "hidden"
+                -->
+                <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+              <div class="flex flex-shrink-0 items-center">
+                <img class="block h-8 w-auto lg:hidden" src="images/arista_logo.jpg" alt="Your Company">
+                <img class="hidden h-8 w-auto lg:block" src="images/arista_logo.jpg" alt="Your Company">
+              </div>
+              <div class="hidden sm:ml-6 sm:block">
+                <div class="flex space-x-4">
+                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                  <a href="index.html" class="bg-gray-900 hover:bg-gray-700 hover:text-white text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Arista Solutions</a>
+      
+                  <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Products</a>
+      
+                  <a href="login.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About us</a>    
                 </div>
               </div>
             </div>
-          </section>
-        </center>
-    </body>
-    
+
+            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <button type="button" class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 hover:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                <span><img src="images/cart.png" width="25px" height="25px" alt=""></span>
+              </button>
+              <!-- Profile dropdown -->
+              <div class="relative px-4 ml-3">
+                <div>
+                  <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                    <span class="sr-only">Open user menu</span>
+                    <img class="h-8 w-8 rounded-full" src="images/user.png" alt="">
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      
+        <!-- Mobile menu, show/hide based on menu state. -->
+
+        <div class="sm:hidden" id="mobile-menu">
+          <div class="space-y-1 px-2 pt-2 pb-3">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <a href="index.html" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Arista Solutions</a>
+      
+            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Products</a>
+      
+            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About us</a>
+      
+          </div>
+        </div>
+
+      </nav>
+
+</body>
 </html>

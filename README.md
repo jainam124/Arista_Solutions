@@ -1,14 +1,22 @@
+## Install packages and dependencies
 
-## Arista Solutions 
+``` npm init -y ```
 
-One of the key objectives of building the web-app for the company is to market the products on the web which will indeed increase the revenue generation of the company.
+``` npm install express ```
+
+``` npm install -D tailwindcss postcss autoprefixer```
+
+``` npx tailwindcss init```
+
+``` npm i --save-dev nodemon```
 
 ---
-There are a variety of products ranging from security systems and fire safety products such as Heat detectors, Smoke detectors, Fire hydrant and sprinkler systems, 
-CCTV cameras, etc.
+
+### Ved Bulsara
+
+Portfolio Website : https://vedbulsara.netlify.app
+
+Github : https://github.com/vedbulsara04
 
 ---
-
-This E-commerce web-app is an industry approved project from the Arista Solutions.
-
----
+   

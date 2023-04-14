@@ -6,85 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-    <title>Arista Solutions</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <title>About us</title>
 </head>
 <body>
-    <!------------------------------------------------------------------- Navbar starts --------------------------------------------------------------- -->
-    <nav class="bg-gray-800">
-        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div class="relative flex h-16 items-center justify-between">
 
-            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">              
-              <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>                
-                <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>                
-                <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-
-            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-
-              <div class="flex flex-shrink-0 items-center">
-                <img class="block h-10 w-auto lg:hidden" src="images/arista_logo.jpg" alt="Your Company">
-                <img class="hidden h-10 w-auto lg:block" src="images/arista_logo.jpg" alt="Your Company">
-              </div>
-
-              <div class="hidden sm:ml-6 sm:block">
-                <div class="flex space-x-4">
-                 
-                  <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Arista Solutions</a>
-      
-                  <a href="products.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Products</a>
-                  
-                  <a href="about.html" class="bg-gray-900 hover:bg-gray-700 hover:text-white text-white rounded-md px-3 py-2 text-lg font-medium" aria-current="page">About us</a>    
-
-                  <a href="contact.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Contact us</a>   
-                </div>
-              </div>              
-
-            </div>
-
-            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
-              <button type="button" class="rounded-full bg-gray-800 p-1 text-gray-400 hover:outline-none hover:ring-2 hover:ring-white hover:ring-offset-2 hover:ring-offset-gray-800">
-                <a href="login.html"><img class="h-7 w-7" src="images/cart.png"  alt="Cart"></a>
-              </button>
-
-              <div class="relative px-4 ml-3">
-                <div>
-                  <button type="button" class="flex rounded-full bg-gray-800 text-sm hover:outline-none hover:ring-2 hover:ring-white hover:ring-offset-2 hover:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">                    
-                    <a href="login.html"><img class="h-10 w-10 rounded-full" src="images/user.png" alt="Account"></a>                    
-                  </button>
-                </div>
-              </div>
-            </div>
-
-          </div>
+<!------------------------------------------------------------------- Navbar starts --------------------------------------------------------------- -->                     
+  <div class="container mx-auto p-5">
+    <div class="md:flex md:flex-row md:justify-between text-center text-sm sm:text-base">
+      <div class="flex flex-row justify-center">
+        <div class="rounded-lg">
+            <a href="index.html">
+                <img
+                  class="mx-auto w-48 hover:shadow-lg transition duration-300 ease-in-out"
+                  src="images/arista_logo.jpg"
+                  alt="logo"
+                />
+            </a>
         </div>
-
-        <div class="sm:hidden" id="mobile-menu">
-          <div class="space-y-1 px-2 pt-2 pb-3">      
-            <a href="index.html" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Arista Solutions</a>
-      
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Products</a>
-      
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About us</a>
-      
-          </div>
-        </div>
-      </nav>
-      <!------------------------------------------------------------------- Navbar ends --------------------------------------------------------------- -->
-
-
-
-
-
-
-      
+        <a href="index.html">
+            <h1 class="text-3xl hover:text-red-600 text-gray-600 mt-12 ml-14 hover:shadow-lg transition duration-300 ease-in-out">Arista Solutions</h1>
+        </a>        
+      </div>
+  
+      <div class="mt-14">
+        <a href="index.html" class="text-gray-600 hover:text-red-600 p-4 px-3 sm:px-5 hover:shadow-lg transition duration-300 ease-in-out">Home</a>      
+        <a href="products.html" class="text-gray-600 hover:text-red-600 p-4 px-3 sm:px-5 hover:shadow-lg transition duration-300 ease-in-out">Products</a>
+        <a href="about.html" class="text-gray-600 hover:text-red-600 p-4 px-3 sm:px-5 hover:shadow-lg transition duration-300 ease-in-out">About us</a>
+        <a href="about.html" class="text-gray-600 hover:text-red-600 p-4 px-3 sm:px-5 hover:shadow-lg transition duration-300 ease-in-out">Terms of Service</a>
+        <a href="contact.html" class="text-gray-600 hover:text-red-600 p-4 px-3 sm:px-5 hover:shadow-lg transition duration-300 ease-in-out">Contact us</a>        
+      </div>
+    </div>   
+<!------------------------------------------------------------------- Navbar ends --------------------------------------------------------------- -->                     
+</div>
 </body>
 </html>

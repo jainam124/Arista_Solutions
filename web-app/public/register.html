@@ -40,26 +40,30 @@
 
             <hr class="mt-7 mb-7">
 
-            <form action="register.html" method="post">
+            <form action="register" method="post">
             <center>
                 <div class="mt-4">                    
                     <div class="mt-4">
                         
-                                <input type="text" placeholder="enter your e-mail" style="text-align: center;"
+                                <input type="text" id="username" name="username" placeholder="enter your e-mail" required style="text-align: center;"
                                     class="w-96 px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     </div>
                     <div class="mt-4">
                         
-                                <input type="password" placeholder="a strong password" style="text-align: center;"
+                                <input type="password" id = "password" name="password" placeholder="a strong password" required style="text-align: center;"
                                     class="w-96 px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     </div>                
+                    <!-- Jainam -->        
                     <a class="w-56 mt-5 inline-block px-6 py-2.5 bg-blue-600 text-white font-medium 
                                         text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700
                                         hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none 
                                         focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150
                                         ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light"
-                                  href="#!" 
-                                  role="button">Register</a> <br><br> 
+                                        href="/web-app/public/login.html">
+                                   
+                                        <input type="submit" value="REGISTER"></a> <br><br>
+                                  <!-- Jainam -->
+                                   
                     <div class="mt-6 text-grey-dark">
                         Already have an account?
                         <a class="text-blue-600 hover:underline" href="login.html">

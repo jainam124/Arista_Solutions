@@ -56,7 +56,7 @@
                             <h4 class="text-lg py-5 font-semibold mt-1 mb-12 pb-1">Arista Solutions</h4>
                           </div>
 
-                          <form>
+                          <form action="/login" method="post">
                             <center>
                               <button class="mt-0 group h-12 px-9 border-2 border-gray-300 rounded-full transition duration-300 
                               hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100">
@@ -76,18 +76,20 @@
                             
                             <div class="mb-4">
                               <input
-                                type="email"
+                                type="text"
                                 class="form-control block w-96 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                id="exampleFormControlInput1"
-                                placeholder="E-mail"
+                                id="username"
+                                name="username"
+                                placeholder="E-mail" required
                               />
                             </div>
                             <div class="mb-4">
                               <input
                                 type="password"
                                 class="form-control block w-96 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus: focus:bg-white focus:border-blue-600 focus:outline-none"
-                                id="exampleFormControlInput1"
-                                placeholder="Password"
+                                id="password"
+                                name="password"
+                                placeholder="Password" required
                               />
                             </div>
 
@@ -97,8 +99,8 @@
                                         hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none 
                                         focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150
                                         ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light"
-                                  href="#!" 
-                                  role="button">Login</a> <br><br>                                                            
+                                  href="/web-app/public/index.html">
+                                  <input type="submit" value="LOGIN"></a> <br><br>                                                           
                                                         
                               <a class="text-gray-500" href="#!">Forgot password?</a>
                             </div>

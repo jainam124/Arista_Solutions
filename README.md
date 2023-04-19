@@ -18,5 +18,7 @@ Portfolio Website : https://vedbulsara.netlify.app
 
 Github : https://github.com/vedbulsara04
 
+Linkedin : https://www.linkedin.com/in/vedbulsara04/
+
 ---
    

@@ -16,6 +16,8 @@
 
 ``` npm install passport passport-google-oauth express-session ```
 
+``` npm install multer path fs ```
+
 ---
 
 ### Jainam Sheth

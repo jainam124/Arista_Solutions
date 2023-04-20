@@ -1,4 +1,4 @@
-# Arista Solutions E-Commerce Web-App
+# Arista Solutions: E-Commerce Web-App
 This branch ` ved1 ` is maintained by [@vedbulsara04](https://github.com/vedbulsara04)
 
 ---

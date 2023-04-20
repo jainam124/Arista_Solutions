@@ -1,6 +1,6 @@
 # Arista Solutions: E-Commerce Web-App
 
-### This project is maintained by :<<
+### This project is maintained by :
 > [@vedbulsara04](https://github.com/vedbulsara04)
 
 > [@jainam124](https://github.com/jainam124)

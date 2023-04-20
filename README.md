@@ -1,64 +1,20 @@
-# Arista Solutions: E-Commerce Web-App
-This branch ` ved1 ` is maintained by [@vedbulsara04](https://github.com/vedbulsara04)
+### This project is maintained by :
+> [@vedbulsara04](https://github.com/vedbulsara04)
+
+> [@jainam124](https://github.com/jainam124)
+
+> [@rajnandurkar](https://github.com/rajnandurkar)
+
+---
+### Project Abstract
+
+
+One of the ` key objectives ` of building the web-app for the company is ` to market the products on the web ` which will indeed increase the revenue generation of the company.
+
+There are a variety of products ranging from security systems and fire safety products such as Heat detectors, Smoke detectors, Fire hydrant and sprinkler systems, 
+CCTV cameras, etc.
+
+This E-commerce web-app ` is an industry approved project ` from Arista Solutions.
 
 ---
 
-## Install packages and dependencies
-
-
-``` 
-npm init -y 
-```
-
-``` 
-npm install express 
-```
-
-``` 
-npm install -D tailwindcss postcss autoprefixer 
-```
-
-``` 
-npx tailwindcss init
-```
-
-``` 
-npm i --save-dev nodemon
-```
-
-``` 
-npm install mysql 
-```
-
-``` 
-npm install crypto 
-```
-
-``` 
-npm install express-session 
-```
-
-``` 
-npm install body-parser path router 
-```
-
-``` 
-npm install multer path fs ejs 
-```
-
-``` 
-npm install passport passport-google-oauth 
-```
-
----
-
-## Ved Bulsara
-
-> Portfolio Website :  https://vedbulsara.netlify.app
-
-> Github : https://github.com/vedbulsara04
-
-> Linkedin : https://www.linkedin.com/in/vedbulsara04/
-
----
-   

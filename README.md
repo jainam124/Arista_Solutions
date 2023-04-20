@@ -1,5 +1,3 @@
-# Arista Solutions: E-Commerce Web-App
-
 ### This project is maintained by :
 > [@vedbulsara04](https://github.com/vedbulsara04)
 
@@ -19,3 +17,4 @@ CCTV cameras, etc.
 This E-commerce web-app ` is an industry approved project ` from Arista Solutions.
 
 ---
+

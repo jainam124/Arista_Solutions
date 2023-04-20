@@ -4,19 +4,29 @@
 
 ``` npm install express ```
 
-``` npm install -D tailwindcss postcss autoprefixer```
+``` npm install -D tailwindcss postcss autoprefixer ```
 
-``` npx tailwindcss init```
+``` npx tailwindcss init ```
 
-``` npm i --save-dev nodemon```
+``` npm i --save-dev nodemon ```
+
+``` npm install mysql ```
+
+``` npm install body-parser path router ```
+
+``` npm install passport passport-google-oauth express-session ```
+
+``` npm install multer path fs ejs ```
+
+``` npm install stripe```
 
 ---
 
-### Ved Bulsara
+### Jainam Sheth
 
-Portfolio Website : https://vedbulsara.netlify.app
+Github : https://github.com/jainam124
 
-Github : https://github.com/vedbulsara04
+LinkedIn: https://www.linkedin.com/in/shethjainam/
 
 ---
    

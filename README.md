@@ -18,6 +18,8 @@
 
 ``` npm install multer path fs ejs ```
 
+``` npm install stripe```
+
 ---
 
 ### Jainam Sheth

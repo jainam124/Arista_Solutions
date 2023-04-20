@@ -1,5 +1,6 @@
 # Arista Solutions: E-Commerce Web-App
-This project is maintained by:
+
+### This project is maintained by :<<
 > [@vedbulsara04](https://github.com/vedbulsara04)
 
 > [@jainam124](https://github.com/jainam124)
@@ -7,6 +8,9 @@ This project is maintained by:
 > [@rajnandurkar](https://github.com/rajnandurkar)
 
 ---
+### Project Abstract
+
+
 One of the ` key objectives ` of building the web-app for the company is ` to market the products on the web ` which will indeed increase the revenue generation of the company.
 
 There are a variety of products ranging from security systems and fire safety products such as Heat detectors, Smoke detectors, Fire hydrant and sprinkler systems, 

@@ -1,24 +1,64 @@
-## Install packages and dependencies
-
-``` npm init -y ```
-
-``` npm install express ```
-
-``` npm install -D tailwindcss postcss autoprefixer```
-
-``` npx tailwindcss init```
-
-``` npm i --save-dev nodemon```
+# Arista Solutions E-Commerce Web-App
+This branch ` ved1 ` is maintained by @vedbulsara04
 
 ---
 
-### Ved Bulsara
+## Install packages and dependencies
 
-Portfolio Website : https://vedbulsara.netlify.app
 
-Github : https://github.com/vedbulsara04
+``` 
+npm init -y 
+```
 
-Linkedin : https://www.linkedin.com/in/vedbulsara04/
+``` 
+npm install express 
+```
+
+``` 
+npm install -D tailwindcss postcss autoprefixer 
+```
+
+``` 
+npx tailwindcss init
+```
+
+``` 
+npm i --save-dev nodemon
+```
+
+``` 
+npm install mysql 
+```
+
+``` 
+npm install crypto 
+```
+
+``` 
+npm install express-session 
+```
+
+``` 
+npm install body-parser path router 
+```
+
+``` 
+npm install multer path fs ejs 
+```
+
+``` 
+npm install passport passport-google-oauth 
+```
+
+---
+
+## Ved Bulsara
+
+> Portfolio Website :  https://vedbulsara.netlify.app
+
+> Github : https://github.com/vedbulsara04
+
+> Linkedin : https://www.linkedin.com/in/vedbulsara04/
 
 ---
    

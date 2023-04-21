@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2023 at 06:57 PM
+-- Generation Time: Apr 21, 2023 at 07:50 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -117,7 +117,10 @@ INSERT INTO `users` (`username`, `password`) VALUES
 ('jainamsheth124@gmail.com', 'jainam'),
 ('jashparmar@gmail.com', 'jash'),
 ('vedbulsara9@gmail.com', 'ved'),
-('jainamsheth124@gmail.com', 'jainam');
+('jainamsheth124@gmail.com', 'jainam'),
+('jainamsheth124@gmail.com', 'jainam'),
+('jainamsheth124@gmail.com', 'jainam'),
+('57498200022@gmail.com', 'jainam');
 
 --
 -- Indexes for dumped tables

@@ -22,17 +22,17 @@ This E-commerce web-app ` is an industry approved project ` from Arista Solution
 
 ## About the Developers :
 
-> Ved Bulsara
+> ` Ved Bulsara `
   >- Github profile : [@vedbulsara04](https://github.com/vedbulsara04)
   >- LinkedIn : [Ved Bulsara](https://www.linkedin.com/in/vedbulsara04/)
   >- E-mail : vedbulsara7@gmail.com
 
-> Jainam Sheth
+> ` Jainam Sheth `
   >- Github profile : [@jainam124](https://github.com/jainam124)
   >- LinkedIn : [Jainam Sheth](https://www.linkedin.com/in/shethjainam/)
   >- E-mail : jainamsheth124@gmail.com
 
-> Raj Nandurkar
+> ` Raj Nandurkar `
   >- Github profile : [@rajnandurkar](https://github.com/rajnandurkar)
   >- LinkedIn : [Raj Nandurkar](https://www.linkedin.com/in/raj-nandurkar-3546b9236/)
   >- E-mail : rajnandurkar2020@gmail.com

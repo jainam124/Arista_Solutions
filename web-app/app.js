@@ -148,7 +148,7 @@ app.post('/upload', upload.single('pdf'), (req, res) => {
   pool.query(sql, [originalname, mimetype, filename], (err, result) => {
     if (err) throw err;
     console.log('PDF uploaded successfully!');
-    res.redirect('/');
+    res.redirect('/upload');
   });
 });
 

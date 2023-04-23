@@ -9,6 +9,10 @@ const app = express();
 const path = require("path");
 const router = express.Router();
 
+//Pdf Upload
+const multer = require('multer');
+const fs = require('fs');
+
 app.use(express.static("public"))
 
 app.get("/", function(req, res){
@@ -130,6 +134,47 @@ app.use(session({
     //   res.send('Incorrect username or password!');
     // }
   
+//PDF Upload
+const upload = multer({ dest: 'uploads/' });
+
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'index.html'));
+// });
+
+app.post('/upload', upload.single('pdf'), (req, res) => {
+  const { originalname, mimetype, filename } = req.file;
+  const sql = 'INSERT INTO pdfs (name, mimetype, file) VALUES (?, ?, ?)';
+
+  pool.query(sql, [originalname, mimetype, filename], (err, result) => {
+    if (err) throw err;
+    console.log('PDF uploaded successfully!');
+    res.redirect('/');
+  });
+});
+
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
+app.get('/upload', (req, res) => {
+  const sql = 'SELECT * FROM pdfs';
+
+  pool.query(sql, (err, results) => {
+    if (err) throw err;
+    res.render('index', { pdfs: results });
+  });
+});
+
+app.get('/pdf/:id', (req, res) => {
+  const sql = 'SELECT * FROM pdfs WHERE id = ?';
+
+  pool.query(sql, [req.params.id], (err, result) => {
+    if (err) throw err;
+
+    const pdfPath = path.join(__dirname, 'uploads', result[0].file);
+    res.download(pdfPath, result[0].name);
+  });
+});
+
 
 app.listen(3000, () => {
     console.log('Server started on port 3000');

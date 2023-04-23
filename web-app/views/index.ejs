@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PDF List</title>
+  </head>
+  <body>
+    <h1>PDF List</h1>
+    <ul>
+      <% pdfs.forEach(pdf => { %>
+        <li><a href="/pdf/<%= pdf.id %>"><%= pdf.name %></a></li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

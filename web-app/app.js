@@ -176,6 +176,88 @@ app.get('/pdf/:id', (req, res) => {
 });
 
 
+//ADD PRODUCT - ADMIN SIDE
+// configure multer to handle image uploads
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "public/images");
+  },
+  filename: (req, file, callback) => {
+    const extension = path.extname(file.originalname);
+    const name = path.basename(file.originalname, extension);
+    callback(null, `${name}-${Date.now()}${extension}`);
+  },
+});
+
+const upload2 = multer({ storage: storage });
+
+// use body-parser middleware to parse request body
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// handle form submission
+app.post("/addProduct", upload2.single("image"), (req, res) => {
+  // extract product data from request body
+  const { name, price, description } = req.body;
+  const image = req.file;
+
+  // convert image to blob format
+  const imageData = fs.readFileSync(image.path);
+  const imageBlob = Buffer.from(imageData);
+
+  // insert product data into database
+  pool.query(
+    "INSERT INTO products (name, price, description, image) VALUES (?, ?, ?, ?)",
+    [name, price, description, imageBlob],
+    (error, results, fields) => {
+      if (error) throw error;
+      res.redirect("/");
+    }
+  );
+});
+
+
+
+//PRODUCT DISPLAY - CLIENT SIDE
+// retrieve product data from the database
+const getProducts = (callback) => {
+  pool.query("SELECT * FROM products", (error, results, fields) => {
+    if (error) throw error;
+    callback(results);
+  });
+};
+
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
+// serve the HTML page with product data
+app.get("/product", (req, res) => {
+  getProducts((products) => {
+    res.render("product", {
+      products: products,
+    });
+  });
+});
+
+// serve the product images
+app.get("/image/:id", (req, res) => {
+  const id = req.params.id;
+  pool.query(
+    "SELECT image FROM products WHERE id = ?",
+    [id],
+    (error, results, fields) => {
+      if (error) throw error;
+      const imageBlob = results[0].image;
+      res.writeHead(200, {
+        "Content-Type": "image/jpeg",
+        "Content-Length": imageBlob.length,
+      });
+      res.end(imageBlob);
+    }
+  );
+});
+
+
+
 app.listen(3000, () => {
     console.log('Server started on port 3000');
 });

@@ -42,10 +42,13 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-52 flex items-baseline">
-              <a href="pdf.html" class="px-4 py-3 rounded-md text-md font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Dashboard</a>
+              <a href="pdf.html" class="px-4 py-3 rounded-md text-md font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Upload PDF</a>
               <a href="/upload" class="ml-4 px-4 py-3 rounded-md text-md font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">View Uploads</a>
-              <a href="#" class="ml-4 px-4 py-3 rounded-md text-md font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Profit margins</a>
-              <a href="login.html" class="ml-96 px-4 py-3 rounded-md text-md font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Profile</a>              
+              <a href="product.html" class="ml-4 px-4 py-3 rounded-md text-md font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Add Products</a>
+              <a href="/product" class="ml-4 px-4 py-3 rounded-md text-md font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">View Added Products</a>
+              <a href="login.html" class="ml-32 px-4 py-3 rounded-md text-md font-medium text-white hover:text-white bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-700">
+                Admin
+              </a>              
             </div>
           </div>
         </div>
@@ -56,7 +59,7 @@
   <!-----------------------------------------------------------------Navbar ends---------------------------------------------------------------- -->
     
     <div class="container mx-auto mt-44 px-5 py-5" style="border: 5px solid yellow; border-radius: 35px; width: 35%;">
-    <p style="font-size: 35px; font-family: 'Oswald', sans-serif;">List of PDFs uploaded into the database :</p>
+    <p style="font-size: 35px; font-family: 'Oswald', sans-serif;"><u>List of PDFs uploaded into the database</u> :</p>
     <ol>
       <br>
       <% pdfs.forEach(pdf => { %>

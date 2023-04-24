@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Product Catalog</title>
+  <style>
+    .product {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .product img {
+      width: 500px;
+      height: 500px;
+      margin-right: 20px;
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .product-description {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Product Catalog</h1>
+  <% for (let i = 0; i < products.length; i++) { %>
+  <div class="product">
+    <img src="/image/<%= products[i].id %>" alt="<%= products[i].name %>" />
+    <div class="product-info">
+      <div class="product-name"><%= products[i].name %></div>
+      <div class="product-price">$<%= products[i].price %></div>
+      <div class="product-description"><%= products[i].description %></div>
+    </div>
+  </div>
+  <% } %>
+</body>
+
+</html>

@@ -157,7 +157,7 @@ app.post('/upload', upload.single('pdf'), (req, res) => {
   pool.query(sql, [originalname, mimetype, filename], (err, result) => {
     if (err) throw err;
     console.log('PDF uploaded successfully!');
-    res.redirect('/');
+    res.redirect('/upload');
   });
 });
 
@@ -261,9 +261,6 @@ app.get("/image/:id", (req, res) => {
     }
   );
 });
-
-
-
 
 app.listen(3000, () => {
     console.log('Server started on port 3000');

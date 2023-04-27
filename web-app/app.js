@@ -150,26 +150,26 @@ const upload = multer({ dest: 'uploads/' });
 //   res.sendFile(path.join(__dirname, 'index.html'));
 // });
 
-app.post('/upload', upload.single('pdf'), (req, res) => {
+app.post('/about', upload.single('pdf'), (req, res) => {
   const { originalname, mimetype, filename } = req.file;
   const sql = 'INSERT INTO pdfs (name, mimetype, file) VALUES (?, ?, ?)';
 
   pool.query(sql, [originalname, mimetype, filename], (err, result) => {
     if (err) throw err;
     console.log('PDF uploaded successfully!');
-    res.redirect('/upload');
+    res.redirect('/about');
   });
 });
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
-app.get('/upload', (req, res) => {
+app.get('/about', (req, res) => {
   const sql = 'SELECT * FROM pdfs';
 
   pool.query(sql, (err, results) => {
     if (err) throw err;
-    res.render('index', { pdfs: results });
+    res.render('about', { pdfs: results });
   });
 });
 
@@ -218,12 +218,14 @@ app.post("/addProduct", upload2.single("image"), (req, res) => {
     [name, price, description, imageBlob],
     (error, results, fields) => {
       if (error) throw error;
-      res.redirect("/");
+      res.redirect("view_product");
     }
   );
 });
 
-//PRODUCT DISPLAY - CLIENT SIDE
+
+
+//PRODUCT DISPLAY - Client SIDE
 // retrieve product data from the database
 const getProducts = (callback) => {
   pool.query("SELECT * FROM products", (error, results, fields) => {
@@ -236,9 +238,9 @@ const getProducts = (callback) => {
 app.set('view engine', 'ejs');
 
 // serve the HTML page with product data
-app.get("/product", (req, res) => {
+app.get("/view_product", (req, res) => {
   getProducts((products) => {
-    res.render("product", {
+    res.render("view_product", {
       products: products,
     });
   });

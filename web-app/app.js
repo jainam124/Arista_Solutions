@@ -20,7 +20,6 @@ app.get("/", function(req, res){
     res.send('<img src = "/images/arista_logo.jpg">')
 })
 
-//Jainam//
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const pool = mysql.createPool({
@@ -90,6 +89,7 @@ app.use(session({
   app.get('/l', (req, res) => {
     if (req.session.loggedIn) {
       res.send('Welcome back, ' + req.session.username + '!');
+      //window.alert("Welcome");
     } else {
       res.send('You need to log in!');
     }
@@ -108,7 +108,16 @@ app.use(session({
             // If the user's credentials are valid, redirect to the home page
             req.session.loggedIn = true;
             req.session.username = username;
-            res.redirect('/l');
+            // res.send(`<script>alert('Welcome ${username}!')</script>`);
+            res.send(`
+                      <script>
+                        alert('Welcome ${username}!');
+                        setTimeout(function() {
+                          window.location.href = 'index.html';
+                        }, 50); // Set a delay of 5 seconds before redirecting
+                      </script>
+                    `);
+            //res.redirect('/l');
             //res.redirect('/index.html');
             
         } else {
@@ -174,7 +183,6 @@ app.get('/pdf/:id', (req, res) => {
     res.download(pdfPath, result[0].name);
   });
 });
-
 
 //ADD PRODUCT - ADMIN SIDE
 // configure multer to handle image uploads
@@ -255,8 +263,6 @@ app.get("/image/:id", (req, res) => {
     }
   );
 });
-
-
 
 app.listen(3000, () => {
     console.log('Server started on port 3000');

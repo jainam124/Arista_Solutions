@@ -85,4 +85,7 @@ npm install multer path fs ejs
 npm install passport passport-google-oauth
 ```
 
+```
+npm install google-auth-library
+```
 ---

@@ -88,4 +88,8 @@ npm install passport passport-google-oauth
 ```
 npm install google-auth-library
 ```
+
+```
+npm install bcrypt
+```
 ---

@@ -13,6 +13,7 @@ const router = express.Router();
 const multer = require('multer');
 const fs = require('fs');
 
+//middleware for serving static file
 app.use(express.static("public"))
 
 app.get("/", function(req, res){
@@ -21,6 +22,7 @@ app.get("/", function(req, res){
 })
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 const pool = mysql.createPool({
   host: 'localhost',
@@ -264,6 +266,100 @@ app.get("/image/:id", (req, res) => {
   );
 });
 
+//-----------------------------------------------------server,js code-----------------------------------------------------
+/*app.get("/cart", (request, response) => {
+
+	const query = `SELECT * FROM products`;
+
+	//Execute Query
+	pool.query(query, (error, result) => {
+
+		response.render('cart', { products : result, cart : request.session.cart });
+
+	});
+
+});*/
+app.get("/cart", (request, response) => {
+
+	const query = `SELECT * FROM product`;
+
+	//Execute Query
+	pool.query(query, (error, result) => {
+
+		if(!request.session.cart)
+		{
+			request.session.cart = [];
+		}
+
+		response.render('cart', { products : result, cart : request.session.cart });
+
+	});
+
+});
+
+//Create Route for Add Item into Cart
+app.post('/add_cart', (request, response) => {
+
+	const id = request.body.id;
+
+	const name = request.body.name;
+
+	const price = request.body.price;
+
+	let count = 0;
+
+  if (!request.session.cart) {
+
+    request.session.cart = [];
+
+  }
+
+	for(let i = 0; i < request.session.cart.length; i++)
+	{
+
+		if(request.session.cart[i].id === id)
+		{
+			request.session.cart[i].quantity += 1;
+
+			count++;
+		}
+
+	}
+
+	if(count === 0)
+	{
+		const cart_data = {
+			id : id,
+			name : name,
+			price : parseFloat(price),
+			quantity : 1
+		};
+
+		request.session.cart.push(cart_data);
+	}
+
+	response.redirect("/view_product");
+
+});
+
+//Create Route for Remove Item from Shopping Cart
+app.get('/remove_item', (request, response) => {
+
+	const id = request.query.id;
+
+	for(let i = 0; i < request.session.cart.length; i++)
+	{
+		if(request.session.cart[i].id === id)
+		{
+			request.session.cart.splice(i, 1);
+		}
+	}
+
+	response.redirect("/cart");
+
+});
+
 app.listen(3000, () => {
     console.log('Server started on port 3000');
+    
 });

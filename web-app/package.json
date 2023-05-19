@@ -15,6 +15,7 @@
     "tailwindcss": "^3.3.1"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "crypto": "^1.0.1",
     "ejs": "^3.1.9",

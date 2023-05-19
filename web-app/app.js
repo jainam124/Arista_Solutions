@@ -13,6 +13,8 @@ const router = express.Router();
 const multer = require('multer');
 const fs = require('fs');
 
+const bcrypt = require('bcrypt');
+
 //middleware for serving static file
 app.use(express.static("public"))
 
@@ -83,58 +85,72 @@ const secret = crypto.randomBytes(32).toString('hex');
 console.log(secret); // prints a random 64-character string
 
 app.use(session({
-    secret: secret,
-    resave: false,
-    saveUninitialized: false
-  }));
-  
-  app.get('/l', (req, res) => {
-    if (req.session.loggedIn) {
-      res.send('Welcome back, ' + req.session.username + '!');
-      //window.alert("Welcome");
-    } else {
-      res.send('You need to log in!');
-    }
-  });
-  
-  app.post('/login', (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
+  secret: secret,
+  resave: false,
+  saveUninitialized: false
+}));
 
+app.get('/l', (req, res) => {
+  if (req.session.loggedIn) {
+    res.send('Welcome back, ' + req.session.username + '!');
+    //window.alert("Welcome");
+  } else {
+    res.send('You need to log in!');
+  }
+});
+
+app.post('/login', (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  if (username === 'admin' && password === 'admin1234') {
+    // If the username and password match, set the session variables and redirect to the home page
+    req.session.loggedIn = true;
+    req.session.username = username;
+    // res.send(`
+    //   <html>
+    //     alert('Welcome ${username}!');
+    //     setTimeout(function() {
+    //       window.location.href = 'index.html';
+    //     }, 50); // Set a delay of 5 seconds before redirecting
+    //   </html>
+    // `);
+    res.redirect('/pdf.html');
+
+
+  } else {
     // Query the MySQL database to check if the user's credentials are valid
     const sql = `SELECT * FROM users WHERE username = ? AND password = ?`;
     pool.query(sql, [username, password], (err, results) => {
-        if (err) throw err;
+      if (err) throw err;
 
-        if (results.length > 0) {
-            // If the user's credentials are valid, redirect to the home page
-            req.session.loggedIn = true;
-            req.session.username = username;
-            // res.send(`<script>alert('Welcome ${username}!')</script>`);
-            res.send(`
-                      <script>
-                        alert('Welcome ${username}!');
-                        setTimeout(function() {
-                          window.location.href = 'index.html';
-                        }, 50); // Set a delay of 5 seconds before redirecting
-                      </script>
-                    `);
-            //res.redirect('/l');
-            //res.redirect('/index.html');
-            
-        } else {
-            // If the user's credentials are not valid, show an error message
-            res.send(`
-                <html>
-                    <body>
-                        <h1>Invalid credentials</h1>
-                        <p>Please enter valid credentials to login</p>
-                    </body>
-                </html>
-            `);
-        }
+      if (results.length > 0) {
+        // If the user's credentials are valid, set the session variables and redirect to the home page
+        req.session.loggedIn = true;
+        req.session.username = username;
+        res.send(`
+          <script>
+            alert('Welcome ${username}!');
+            setTimeout(function() {
+              window.location.href = 'index.html';
+            }, 50); // Set a delay of 5 seconds before redirecting
+          </script>
+        `);
+      } else {
+        // If the user's credentials are not valid, show an error message
+        res.send(`
+          <html>
+            <body>
+              <h1>Invalid credentials</h1>
+              <p>Please enter valid credentials to log in</p>
+            </body>
+          </html>
+        `);
+      }
     });
+  }
 });
+
     
     // // Check if username and password are correct (replace with your own authentication logic)
     // if (username === 'myusername' && password === 'mypassword') {
@@ -358,6 +374,30 @@ app.get('/remove_item', (request, response) => {
 	response.redirect("/cart");
 
 });
+
+
+
+// Define a route for storing the order in the database
+app.post('/submit-order', (req, res) => {
+  const { itemName, quantity, unitPrice, totalPrice } = req.body;
+
+  // Create an SQL query to insert the order into the 'orders' table
+  const sql = 'INSERT INTO orders (itemName, quantity, unitPrice, totalPrice) VALUES (?, ?, ?, ?)';
+  const values = [itemName, quantity, unitPrice, totalPrice];
+
+  // Execute the SQL query
+  connection.query(sql, values, (err, result) => {
+    if (err) {
+      console.error('Error storing the order: ', err);
+      res.status(500).send('Error storing the order');
+      return;
+    }
+
+    console.log('Order stored successfully!');
+    res.status(200).send('Order stored successfully');
+  });
+});
+
 
 app.listen(3000, () => {
     console.log('Server started on port 3000');

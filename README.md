@@ -22,35 +22,31 @@ This E-commerce web-app ` is an industry approved project ` from Arista Solution
 
 ## About the Developers :
 
-> ` Ved Bulsara `
+` Ved Bulsara `
   >- Github profile : [@vedbulsara04](https://github.com/vedbulsara04)
   >- LinkedIn : [Ved Bulsara](https://www.linkedin.com/in/vedbulsara04/)
   >- E-mail : vedbulsara7@gmail.com
 
-> ` Jainam Sheth `
+` Jainam Sheth `
   >- Github profile : [@jainam124](https://github.com/jainam124)
   >- LinkedIn : [Jainam Sheth](https://www.linkedin.com/in/shethjainam/)
   >- E-mail : jainamsheth124@gmail.com
 
-> ` Raj Nandurkar `
+` Raj Nandurkar `
   >- Github profile : [@rajnandurkar](https://github.com/rajnandurkar)
   >- LinkedIn : [Raj Nandurkar](https://www.linkedin.com/in/raj-nandurkar-3546b9236/)
   >- E-mail : rajnandurkar2020@gmail.com
 
 ---
 
-## Install packages and dependencies
+## Install packages and dependencies (Total: 18)
 
 ``` 
 npm init -y 
 ```
 
 ``` 
-npm install express 
-```
-
-```
-npm install express-session 
+npm install express express-session 
 ```
 
 ``` 
@@ -66,15 +62,11 @@ npm i --save-dev nodemon
 ```
 
 ```
-npm install mysql 
+npm install mysql crypto bcrypt
 ```
 
 ``` 
 npm install body-parser path router 
-```
-
-``` 
-npm install crypto
 ```
 
 ``` 
@@ -89,3 +81,11 @@ npm install passport passport-google-oauth
 npm install google-auth-library
 ```
 ---
+
+## After Installing all dependencies,
+### Type this command :
+
+```
+npm run start
+```
+> This command will initiate a script to run the web-app on localhost:3000

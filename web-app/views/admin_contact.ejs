@@ -24,11 +24,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">   
-    <title>Upload PDF</title>
+    <title>User List</title>
   </head>
-  <body>
   <!-----------------------------------------------------------------Navbar starts---------------------------------------------------------------- -->
- 
+
+
   <nav class="bg-gray-800" style="
   background-color: #202156;
   border-radius: 20px;
@@ -43,7 +43,7 @@
           <div class="ml-36 mr-5">
             <a href="index.html">
                 <img
-                  class="rounded-2xl mx-auto w-24 hover:shadow-lg transition duration-300 ease-in-out"
+                  class="rounded-3 mx-auto w-24 hover:shadow-lg transition duration-300 ease-in-out"
                   src="images/arista_logo.jpg"
                   alt="logo"
                 />
@@ -54,10 +54,11 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-32 flex items-baseline">
-              <a href="/dashboard" class="px-6 py-3 rounded-3xl text-md font-medium text-white hover:bg-red-500 focus:outline-none focus:text-white focus:bg-red-500">Dashboard</a>
-              <a href="/users" class="ml-4 px-4 py-3 rounded-3xl text-md font-medium text-white hover:bg-red-500 focus:outline-none focus:text-white focus:bg-red-500">Manage Users</a>
-              <a href="pdf.html" class="ml-4 px-4 py-3 rounded-3xl text-md font-medium text-white bg-indigo-500 focus:outline-none focus:text-white focus:bg-red-500">Upload PDF</a>
-              <a href="product.html" class="ml-4 px-4 py-3 rounded-3xl text-md font-medium text-white hover:bg-red-500 focus:outline-none focus:text-white focus:bg-red-500">Add Products</a>	                            
+              <a href="/dashboard" class="ml-4 px-4 py-3 rounded-3xl text-md font-medium text-white hover:bg-red-500 focus:outline-none focus:text-black focus:bg-red-500">Dashboard</a>
+              <a href="/users"  class="px-6 py-3 rounded-3xl text-md font-medium text-white bg-indigo-600 focus:outline-none focus:text-black focus:bg-red-500">Manage Users</a>
+              <a href="pdf.html" class="ml-4 px-4 py-3 rounded-3xl text-md font-medium text-white hover:bg-red-500 focus:outline-none focus:text-black focus:bg-red-500">Upload PDF</a>
+              <a href="product.html" class="ml-4 px-4 py-3 rounded-3xl text-md font-medium text-white hover:bg-red-500 focus:outline-none focus:text-black focus:bg-red-500">Add Products</a>	              
+              <a href="/admin_contact"  class="px-6 py-3 rounded-3xl text-md font-medium text-white bg-indigo-600 focus:outline-none focus:text-black focus:bg-red-500">Messages</a>
               <a href="login.html" class="ml-64 px-4 py-3 rounded-md text-md font-medium text-white hover:text-white bg-red-500 focus:outline-none focus:text-white focus:bg-red-500">
                 Admin
               </a>         
@@ -68,30 +69,88 @@
     </div>
   </nav>
 
+
+
+
   <!-----------------------------------------------------------------Navbar ends---------------------------------------------------------------- -->
 
-<div class="container mt-28 px-5 py-5 mx-auto" style="border: 5px solid #8c93c7; border-radius: 35px; width: 615px;">
-  
-  <p style="font-size: 40px; font-family: 'Oswald', sans-serif;"><u>Upload a PDF to the database</u> :</p>
 
-  <form action="/about" method="post" enctype="multipart/form-data">
-    <br><br>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+  text-align: center;
+  color: #333;
+  font-size: 40px;
+  padding-top: 20px;
+}
 
-    <input class="w-96 mb-5 text-sm text-gray-900 border
-                border-gray-300 rounded-lg cursor-pointer 
-                dark:text-black focus:outline-none bg-white
-                dark:border-gray-600 dark:placeholder-black" 
-    id="default_size" type="file" name="pdf">
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
 
-    <button class="ml-4 bg-blue-500 hover:bg-blue-400 text-white 
-                     font-bold py-2 px-6 border-b-4 border-blue-700
-                   hover:border-blue-500 rounded" 
-                     type="submit">
-    Upload
-    </button>
+th, td {
+  border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+    font-size: 17px;
+}
 
- </form>
+th {
+  background-color: #a6abd1;
+    color: #333;
+    padding: 15px;
+    text-align: center;
+    font-size: 20px;
+}
 
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+</style>
+</head>
+<body>
+  <div class="user" style="padding: 20px;">
+  <b><h1 style="font-family: 'Kanit', sans-serif;">List of Messages</h1></b>
+  <div class="user-table"  style="border-radius: 25px;">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Message</th>
+      <th>Action</th>
+    </tr>
+    <% contact.forEach(function(con) { %>
+      <tr>
+        <td><%= con.name %></td>
+        <td><%= con.email %></td>
+        <td><%= con.message %></td>
+        <td>
+          <form action="/delete/<%= con.email %>" method="POST">
+            <button class="delete-button" type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }); %>
+  </table>
+
+  </div>
 </div>
-  </body>
+</body>
 </html>

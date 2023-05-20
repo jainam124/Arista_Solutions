@@ -3,10 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2023 at 10:17 AM
+-- Generation Time: May 20, 2023 at 09:10 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
-
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -21,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `aristasolutions`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `message` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`name`, `email`, `message`) VALUES
+('Ved Bulsara', 'vedbulsara7@gmail.com', 'Great service by Arista Solutions. Awesome!');
 
 -- --------------------------------------------------------
 
@@ -42,6 +60,30 @@ CREATE TABLE `items` (
 
 INSERT INTO `items` (`id`, `name`, `description`, `price`, `image`) VALUES
 (1, 'RE-102 System', 'jnadsfnjnn', '1000', 'http://www.newagefireprotection.com/admin/images/news/news_banner_1.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `newsletter`
+--
+
+CREATE TABLE `newsletter` (
+  `email` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `newsletter`
+--
+
+INSERT INTO `newsletter` (`email`) VALUES
+('jainamsheth124@gmail.com'),
+('vedbulsara7@gmail.com'),
+('jainamsheth124@gmail.com'),
+('vedbulsara9@gmail.com'),
+('jainamsheth124@gmail.com'),
+('jainamsheth124@gmail.com'),
+('vedbulsara7@gmail.com'),
+('jainamsheth124@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -78,7 +120,6 @@ INSERT INTO `pdfs` (`id`, `name`, `mimetype`, `file`) VALUES
 (1, 'Lab_Man_E-Commerce_190917 Final (1) (1).pdf', 'application/pdf', '0f20250a51b19300487e4ab799d350b6'),
 (2, 'ISS_PT2_QB_may2023.pdf', 'application/pdf', 'a725b85dadf7b6143dac1cd6a6b556bb'),
 (3, 'ISS PT1 QB_merged-1-31.pdf', 'application/pdf', 'd93b5a3e02667721e01597dd05c20afc');
-
 
 -- --------------------------------------------------------
 
@@ -146,6 +187,14 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`name`, `phone`, `username`, `password`) VALUES
+('Ved Bulsara', '1234567890', 'vedbulsara9@gmail.com', 'ved'),
+('Jainam Sheth', '1234567900', 'jainamsheth124@gmail.com', 'jainam');
 
 --
 -- Indexes for dumped tables

@@ -7,6 +7,7 @@
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -77,6 +78,7 @@ INSERT INTO `pdfs` (`id`, `name`, `mimetype`, `file`) VALUES
 (1, 'Lab_Man_E-Commerce_190917 Final (1) (1).pdf', 'application/pdf', '0f20250a51b19300487e4ab799d350b6'),
 (2, 'ISS_PT2_QB_may2023.pdf', 'application/pdf', 'a725b85dadf7b6143dac1cd6a6b556bb'),
 (3, 'ISS PT1 QB_merged-1-31.pdf', 'application/pdf', 'd93b5a3e02667721e01597dd05c20afc');
+
 
 -- --------------------------------------------------------
 

@@ -140,7 +140,7 @@ app.post('/login', (req, res) => {
     //     }, 50); // Set a delay of 5 seconds before redirecting
     //   </html>
     // `);
-    res.redirect('/users');
+    res.redirect('/dashboard');
 
 
   } else {
@@ -492,6 +492,66 @@ app.get('/logout', (req, res) => {
   // Send the modified HTML as the response
   res.send(html);
 });*/
+
+//CONTACT
+app.post('/contact', (req, res) => {
+  const name = req.body.name;
+  const email = req.body.email;
+  const message = req.body.message;
+
+  pool.getConnection((err, connection) => {
+    if (err) throw err; 
+        // Insert the new user into the database
+        connection.query('INSERT INTO contact (name, email, message) VALUES (?, ?, ?)', [name, email, message], (err, result) => {
+          connection.release();
+          if (err) throw err;
+          console.log('Feedback received');
+          //res.send('User registered');
+          res.redirect('/contact.html');
+        });
+    });
+  });
+
+
+//ADMIN-MANAGE USERS
+// Route to display the user list
+app.get('/admin_contact', (req, res) => {
+  // Fetch users from the database
+  pool.query('SELECT * FROM contact', (error, results) => {
+    if (error) throw error;
+    res.render('admin_contact', { contact: results });
+  });
+});
+
+// Route to handle delete request
+app.post('/delete/:email', (req, res) => {
+  const email = req.params.email;
+
+  // Display confirmation dialog using JavaScript's alert
+  const confirmation = `
+    <script>
+      var confirmed = confirm("Are you sure you want to delete the user?");
+      if (confirmed) {
+        window.location.href = "/delete/confirmed/${email}";
+      } else {
+        window.location.href = "/";
+      }
+    </script>
+  `;
+
+  res.send(confirmation);
+});
+
+// Route to handle confirmed delete request
+app.get('/delete/confirmed/:username', (req, res) => {
+  const email = req.params.email;
+
+  // Delete the user from the database
+  pool.query('DELETE FROM users WHERE email = ?', [email], (error, result) => {
+    if (error) throw error;
+    res.redirect('/admin_contact');
+  });
+});
 
 app.listen(3000, () => {
     console.log('Server started on port 3000');    

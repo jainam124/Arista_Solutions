@@ -417,7 +417,7 @@ app.post('/delete/:username', (req, res) => {
       if (confirmed) {
         window.location.href = "/delete/confirmed/${username}";
       } else {
-        window.location.href = "/";
+        window.location.href = "/users";
       }
     </script>
   `;
@@ -512,8 +512,7 @@ app.post('/contact', (req, res) => {
     });
   });
 
-
-//ADMIN-MANAGE USERS
+//ADMIN-MANAGE MESSAGES
 // Route to display the user list
 app.get('/admin_contact', (req, res) => {
   // Fetch users from the database
@@ -524,17 +523,17 @@ app.get('/admin_contact', (req, res) => {
 });
 
 // Route to handle delete request
-app.post('/delete/:email', (req, res) => {
+app.post('/delete3/:email', (req, res) => {
   const email = req.params.email;
 
   // Display confirmation dialog using JavaScript's alert
   const confirmation = `
     <script>
-      var confirmed = confirm("Are you sure you want to delete the user?");
+      var confirmed = confirm("Are you sure you want to delete the message?");
       if (confirmed) {
-        window.location.href = "/delete/confirmed/${email}";
+        window.location.href = "/delete3/confirmed/${email}";
       } else {
-        window.location.href = "/";
+        window.location.href = "/admin_contact";
       }
     </script>
   `;
@@ -543,15 +542,76 @@ app.post('/delete/:email', (req, res) => {
 });
 
 // Route to handle confirmed delete request
-app.get('/delete/confirmed/:username', (req, res) => {
+app.get('/delete3/confirmed/:email', (req, res) => {
   const email = req.params.email;
 
   // Delete the user from the database
-  pool.query('DELETE FROM users WHERE email = ?', [email], (error, result) => {
+  pool.query('DELETE FROM contact WHERE email = ?', [email], (error, result) => {
     if (error) throw error;
     res.redirect('/admin_contact');
   });
 });
+
+
+
+//NEWSLETTER
+app.post('/newsletter', (req, res) => {
+  const email = req.body.email;
+  
+  pool.getConnection((err, connection) => {
+    if (err) throw err; 
+        // Insert the new user into the database
+        connection.query('INSERT INTO newsletter (email) VALUES (?)', [email], (err, result) => {
+          connection.release();
+          if (err) throw err;
+          console.log('Newsletter subscribed');
+          //res.send('User registered');
+          res.redirect('/index.html');
+        });
+    });
+  });
+
+
+//ADMIN-MANAGE NEWSLETTER
+// Route to display the user list
+app.get('/newsletter', (req, res) => {
+  // Fetch newsletter from the database
+  pool.query('SELECT * FROM newsletter', (error, results) => {
+    if (error) throw error;
+    res.render('newsletter', { newsletter: results });
+  });
+});
+
+// Route to handle delete request
+app.post('/delete2/:email', (req, res) => {
+  const email = req.params.email;
+
+  // Display confirmation dialog using JavaScript's alert
+  const confirmation = `
+    <script>
+      var confirmed = confirm("Are you sure you want to delete the subscriber?");
+      if (confirmed) {
+        window.location.href = "/delete2/confirmed/${email}";
+      } else {
+        window.location.href = "/newsletter";
+      }
+    </script>
+  `;
+
+  res.send(confirmation);
+});
+
+// Route to handle confirmed delete request
+app.get('/delete2/confirmed/:email', (req, res) => {
+  const email = req.params.email;
+
+  // Delete the user from the database
+  pool.query('DELETE FROM newsletter WHERE email = ?', [email], (error, result) => {
+    if (error) throw error;
+    res.redirect('/newsletter');
+  });
+});
+
 
 app.listen(3000, () => {
     console.log('Server started on port 3000');    

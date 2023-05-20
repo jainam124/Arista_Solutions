@@ -75,7 +75,7 @@ app.post('/register', (req, res) => {
 });
 
 
-// // LOGIN
+// LOGIN
 // app.post('/login', (req, res) => {
 //     const username = req.body.username;
 //     const password = req.body.password;
@@ -305,18 +305,7 @@ app.get("/image/:id", (req, res) => {
 });
 
 //-----------------------------------------------------ADD-TO-CART-----------------------------------------------------
-/*app.get("/cart", (request, response) => {
 
-	const query = `SELECT * FROM products`;
-
-	//Execute Query
-	pool.query(query, (error, result) => {
-
-		response.render('cart', { products : result, cart : request.session.cart });
-
-	});
-
-});*/
 app.get("/cart", (request, response) => {
 	const query = `SELECT * FROM product`;
 	//Execute Query
@@ -472,26 +461,6 @@ app.get('/logout', (req, res) => {
     req.session.isLoggedIn = false;
     res.json({ isLoggedIn: false });
 });
-
-/*app.get('/index', (req, res) => {
-  res.send(html);
-});*/
-
-//${condition ? '<p>The condition is true!</button>' : '<p>The condition is false!</p>'}
-/*app.get('/index', (req, res) => {
-  // Get the logged-in state from your authentication logic
-  const loggedIn = req.session.loggedIn || false;
-
-  // Read the index.html file
-  let html = fs.readFileSync(__dirname + '/index.html', 'utf8');
-
-  // Replace the placeholder with the login/logout button
-  const loginButton = loggedIn ? '<a href="/logout">Logout</a>' : '<a href="/login">Login</a>';
-  html = html.replace('<!-- The login/logout button will be dynamically inserted here -->', loginButton);
-
-  // Send the modified HTML as the response
-  res.send(html);
-});*/
 
 //CONTACT
 app.post('/contact', (req, res) => {

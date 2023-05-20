@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/arista_logo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alkatra&family=Golos+Text&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">   
+
+  <!-----------------------------------------------------------------Navbar starts---------------------------------------------------------------- -->
+
+  <nav class="bg-gray-800" style="
+  background-color: #202156;
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 25px;
+  padding: 15px;
+">
+    <div class="max-w-8xl mx-auto px-10 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <a href="/" class="text-white font-bold text-3xl">Arista Solutions</a>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-52 flex items-baseline">
+              <a href="/users" class="px-4 py-3 rounded-md text-md font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Manage Users</a>
+              <a href="pdf.html" class="px-4 py-3 rounded-md text-md font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Upload PDF</a>
+              <a href="product.html" class="ml-4 px-4 py-3 rounded-md text-md font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Add Products</a>	              
+              <a href="/view_product" class="ml-4 px-4 py-3 rounded-md text-md font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700" target="_blank">View Added Products</a>
+              <a href="login.html" class="ml-32 px-4 py-3 rounded-md text-md font-medium text-white hover:text-white bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-700">
+                Admin
+              </a>         
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-----------------------------------------------------------------Navbar ends---------------------------------------------------------------- -->
+
+  <title>User List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+  text-align: center;
+  color: #333;
+  font-size: 40px;
+  padding-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+    font-size: 17px;
+}
+
+th {
+  background-color: #9a9bcd;
+    color: #333;
+    padding: 15px;
+    text-align: center;
+    font-size: 20px;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+</style>
+</head>
+<body>
+  <div class="user" style="padding: 20px;">
+  <b><h1>User List</h1></b>
+  <div class="user-table" >
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Action</th>
+    </tr>
+    <% users.forEach(function(user) { %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.username %></td>
+        <td><%= user.password %></td>
+        <td>
+          <form action="/delete/<%= user.username %>" method="POST">
+            <button class="delete-button" type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }); %>
+  </table>
+  </div>
+</div>
+</body>
+</html>

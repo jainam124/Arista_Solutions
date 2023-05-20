@@ -1,11 +1,12 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2023 at 09:34 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: May 20, 2023 at 10:17 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,6 +46,20 @@ INSERT INTO `items` (`id`, `name`, `description`, `price`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `sr_no` int(100) NOT NULL,
+  `itemName` varchar(100) NOT NULL,
+  `quantity` varchar(100) NOT NULL,
+  `unitPrice` varchar(100) NOT NULL,
+  `totalPrice` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pdfs`
 --
 
@@ -60,12 +75,10 @@ CREATE TABLE `pdfs` (
 --
 
 INSERT INTO `pdfs` (`id`, `name`, `mimetype`, `file`) VALUES
-(24, '1.Coursera Technical_Support_Fundamentals.pdf', 'application/pdf', '7778133a3904ce9469f6f5c4e145b397'),
-(25, '2.Coursera Bits_and_Bytes_of_Networking.pdf', 'application/pdf', '57b55d61f2d768d732864ac223130c1a'),
-(26, '3.Coursera OS_Becoming_a_power_user.pdf', 'application/pdf', 'b6064363b43b8c977cd60b979c51c92c'),
-(27, '4.Coursera System_Administration_and_IT_infra_services.pdf', 'application/pdf', 'cbdd45925c9d2bb3638410b5854803a4'),
-(28, 'IT_V_VI_Annexure.pdf', 'application/pdf', '224d650a447d29c8d8d2d4850a568dab'),
-(29, 'SimpliLearn_Intro to Kubernetes.pdf', 'application/pdf', '06a9da30a328364013c881f225356196');
+(1, 'Lab_Man_E-Commerce_190917 Final (1) (1).pdf', 'application/pdf', '0f20250a51b19300487e4ab799d350b6'),
+(2, 'ISS_PT2_QB_may2023.pdf', 'application/pdf', 'a725b85dadf7b6143dac1cd6a6b556bb'),
+(3, 'ISS PT1 QB_merged-1-31.pdf', 'application/pdf', 'd93b5a3e02667721e01597dd05c20afc');
+
 
 -- --------------------------------------------------------
 
@@ -128,43 +141,11 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`) VALUES
 --
 
 CREATE TABLE `users` (
+  `name` text NOT NULL,
+  `phone` varchar(100) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`username`, `password`) VALUES
-('jainamsheth124@gmail.com', 'jainam123$'),
-('jainamsheth124@gmail.com', 'jainam'),
-('vedbulsara9@gmail.com', 'ved'),
-('vedbulsara9@gmail.com', 'ved'),
-('jash123@gmail.com', 'jash123'),
-('jainamsheth124@gmail.com', 'jainam'),
-('', ''),
-('jainamsheth124@gmail.com', 'asdf123$'),
-('jainamsheth124@gmail.com', 'asdf123$'),
-('jainamsheth124@gmail.com', 'des'),
-('jainamsheth124@gmail.com', 'ert'),
-('jainamsheth124@gmail.com', 'ert'),
-('jainamsheth124@gmail.com', 'ert'),
-('jainamsheth124@gmail.com', 'ert'),
-('jainamsheth124@gmail.com', 'a'),
-('jainamsheth124@gmail.com', 'jainam1*'),
-('jainamsheth124@gmail.com', 'jainam1*'),
-('jainamsheth124@gmail.com', 'jainam1*'),
-('vedbulsara9@gmail.com', 'ved123'),
-('jainamsheth124@gmail.com', 'jainam'),
-('jainamsheth124@gmail.com', 'jainam'),
-('jashparmar@gmail.com', 'jash'),
-('vedbulsara9@gmail.com', 'ved'),
-('jainamsheth124@gmail.com', 'jainam'),
-('jainamsheth124@gmail.com', 'jainam'),
-('jainamsheth124@gmail.com', 'jainam'),
-('57498200022@gmail.com', 'jainam'),
-('jainamsheth124@gmail.com', 'jainam');
 
 --
 -- Indexes for dumped tables
@@ -175,6 +156,12 @@ INSERT INTO `users` (`username`, `password`) VALUES
 --
 ALTER TABLE `items`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`sr_no`);
 
 --
 -- Indexes for table `pdfs`
@@ -199,10 +186,16 @@ ALTER TABLE `items`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `sr_no` int(100) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `pdfs`
 --
 ALTER TABLE `pdfs`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`

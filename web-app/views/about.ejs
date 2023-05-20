@@ -59,15 +59,17 @@
     </div>  
   <!-----------------------------------------------------------------Navbar ends---------------------------------------------------------------- -->
     
+  <!-- PDF brochure list  -->
     <div class="container ml-10 mt-6 px-5 py-5" style="border: 5px solid yellow; border-radius: 35px; width: 35%;">
     <p style="font-size: 35px; font-family: 'Oswald', sans-serif;"><u>PDF brochures for our products</u> :</p>
     <ol>
-      <br>
+      <br>      
+      <!-- Logic for pdf brochure list -->
       <% pdfs.forEach(pdf => { %>
         <li class="mb-3" style="font-family: 'Rajdhani', sans-serif; font-size: 20px; color: #009FBD;"><a href="/pdf/<%= pdf.id %>"><%= pdf.name %></a></li>
       <% }) %>
     </ol>
     </div>
+    
   </body>
-
 </html>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<head>
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,8 +24,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">   
-
+    <title>User List</title>
+  </head>
   <!-----------------------------------------------------------------Navbar starts---------------------------------------------------------------- -->
+
 
   <nav class="bg-gray-800" style="
   background-color: #202156;
@@ -36,19 +37,28 @@
   margin-top: 25px;
   padding: 15px;
 ">
-    <div class="max-w-8xl mx-auto px-10 sm:px-6 lg:px-8">
+    <div class="lg\:max-w-screen-lg mx-auto px-10 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center">
+          <div class="ml-36 mr-5">
+            <a href="index.html">
+                <img
+                  class="rounded-3 mx-auto w-24 hover:shadow-lg transition duration-300 ease-in-out"
+                  src="images/arista_logo.jpg"
+                  alt="logo"
+                />
+            </a>
+           </div>
           <div class="flex-shrink-0">
-            <a href="/" class="text-white font-bold text-3xl">Arista Solutions</a>
+            <a href="index.html" class="text-white font-bold text-3xl">Arista Solutions</a>
           </div>
           <div class="hidden md:block">
-            <div class="ml-52 flex items-baseline">
-              <a href="/users" class="px-4 py-3 rounded-md text-md font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Manage Users</a>
-              <a href="pdf.html" class="px-4 py-3 rounded-md text-md font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Upload PDF</a>
-              <a href="product.html" class="ml-4 px-4 py-3 rounded-md text-md font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Add Products</a>	              
-              <a href="/view_product" class="ml-4 px-4 py-3 rounded-md text-md font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700" target="_blank">View Added Products</a>
-              <a href="login.html" class="ml-32 px-4 py-3 rounded-md text-md font-medium text-white hover:text-white bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-700">
+            <div class="ml-32 flex items-baseline">
+              <a href="/users"  class="px-6 py-3 rounded-3xl text-md font-medium text-white bg-indigo-600 focus:outline-none focus:text-black focus:bg-red-500">Manage Users</a>
+              <a href="pdf.html" class="ml-4 px-4 py-3 rounded-3xl text-md font-medium text-white hover:bg-red-500 focus:outline-none focus:text-black focus:bg-red-500">Upload PDF</a>
+              <a href="product.html" class="ml-4 px-4 py-3 rounded-3xl text-md font-medium text-white hover:bg-red-500 focus:outline-none focus:text-black focus:bg-red-500">Add Products</a>	              
+              <a href="/view_product" class="ml-4 px-4 py-3 rounded-3xl text-md font-medium text-white hover:bg-red-500 focus:outline-none" target="_blank">View Added Products</a>
+              <a href="login.html" class="ml-64 px-4 py-3 rounded-md text-md font-medium text-white hover:text-white bg-red-500 focus:outline-none focus:text-white focus:bg-red-500">
                 Admin
               </a>         
             </div>
@@ -58,9 +68,12 @@
     </div>
   </nav>
 
+
+
+
   <!-----------------------------------------------------------------Navbar ends---------------------------------------------------------------- -->
 
-  <title>User List</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -86,7 +99,7 @@ th, td {
 }
 
 th {
-  background-color: #9a9bcd;
+  background-color: #FFD93D;
     color: #333;
     padding: 15px;
     text-align: center;
@@ -102,7 +115,7 @@ tr:nth-child(even) {
   color: #fff;
   border: none;
   padding: 6px 12px;
-  border-radius: 4px;
+  border-radius: 12px;
   cursor: pointer;
 }
 
@@ -113,8 +126,8 @@ tr:nth-child(even) {
 </head>
 <body>
   <div class="user" style="padding: 20px;">
-  <b><h1>User List</h1></b>
-  <div class="user-table" >
+  <b><h1 style="font-family: 'Kanit', sans-serif;">Users List</h1></b>
+  <div class="user-table"  style="border-radius: 25px;">
   <table>
     <tr>
       <th>Name</th>
@@ -137,6 +150,7 @@ tr:nth-child(even) {
       </tr>
     <% }); %>
   </table>
+
   </div>
 </div>
 </body>

@@ -540,6 +540,25 @@ app.get('/delete/confirmed/:username', (req, res) => {
   });
 });
 
+//NEWSLETTER
+app.post('/newsletter', (req, res) => {
+  const name = req.body.name;
+  const email = req.body.email;
+  const message = req.body.message;
+
+  pool.getConnection((err, connection) => {
+    if (err) throw err; 
+        // Insert the new user into the database
+        connection.query('INSERT INTO newsletter (email) VALUES (?)', [email], (err, result) => {
+          connection.release();
+          if (err) throw err;
+          console.log('Newsletter subscribed');
+          //res.send('User registered');
+          res.redirect('/index.html');
+        });
+    });
+  });
+
 app.listen(3000, () => {
     console.log('Server started on port 3000');    
 });

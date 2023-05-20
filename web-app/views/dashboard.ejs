@@ -2,39 +2,89 @@
 <html>
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+  <link rel="icon" type="image/x-icon" href="images/arista_logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <!-----------------------------------------------------------------Navbar starts---------------------------------------------------------------- -->
+
+    <nav class="bg-gray-800" style="
+    background-color: #202156;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 25px;
+    padding: 15px;
+  ">
+      <div class="lg\:max-w-screen-lg mx-auto px-10 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center">
+            <div class="ml-36 mr-5">
+              <a href="index.html">
+                  <img
+                    class="rounded-2xl mx-auto w-24 hover:shadow-lg transition duration-300 ease-in-out"
+                    src="images/arista_logo.jpg"
+                    alt="logo"
+                  />
+              </a>
+             </div>
+            <div class="flex-shrink-0">
+              <a href="index.html" class="text-white font-bold text-3xl">Arista Solutions</a>
+            </div>
+            <div class="hidden md:block">
+              <div class="ml-32 flex items-baseline">
+                <a href="/dashboard" class="px-6 py-4 rounded-3xl text-md font-medium text-white bg-indigo-500 focus:outline-none focus:text-white focus:bg-red-500">Dashboard</a>
+                <a href="/users" class="ml-4 px-4 py-4 rounded-3xl text-md font-medium text-white hover:bg-red-500 focus:outline-none focus:text-white focus:bg-red-500">Manage Users</a>
+                <a href="pdf.html" class="ml-4 px-4 py-4 rounded-3xl text-md font-medium text-white hover:bg-red-500 focus:outline-none focus:text-white focus:bg-red-500">Upload PDF</a>
+                <a href="product.html" class="ml-4 px-4 py-4 rounded-3xl text-md font-medium text-white hover:bg-red-500 focus:outline-none focus:text-white focus:bg-red-500">Add Products</a>	              
+                
+                <a href="login.html" class="ml-64 px-4 py-3 rounded-md text-md font-medium text-white hover:text-white bg-red-500 focus:outline-none focus:text-white focus:bg-red-500">
+                  Admin
+                </a>         
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  
+    <!-----------------------------------------------------------------Navbar ends---------------------------------------------------------------- -->
+  
   <div class="dashboard-container">
-    <header class="dashboard-header bg-gray-800 text-white p-4">
-      <h1 class="text-2xl">Dashboard</h1>
-    </header>
     <main class="dashboard-content p-4">
-      <h2 class="text-xl font-bold mb-4">Welcome, Jainam!</h2>
+      <p class="font-bold mt-10 mb-12" style="font-size: 45px; margin-left: 800px; font-family: 'Kanit', sans-serif;">Dashboard</p>
       <ul class="dashboard-list grid grid-cols-2 gap-4">
         <li>
-          <div class="dashboard-list-item bg-gray-100 rounded-lg p-4 shadow">
-            <span class="dashboard-list-item-title text-lg font-bold">Total Products : </span>
-            <span class="dashboard-list-item-value text-2xl"><%= totalProducts %></span>
+          <!-- Users and Products -->
+          <div class="dashboard-list-item bg-gray-100 rounded-lg p-20 shadow">
+            <span class="dashboard-list-item-title font-bold" style="font-size: 35px;">New Users : </span>
+            <span class="ml-4 dashboard-list-item-value" style="font-size: 50px;"><%= totalUsers %></span>
           </div>
         </li>
         <li>
-          <div class="dashboard-list-item bg-gray-100 rounded-lg p-4 shadow">
-            <span class="dashboard-list-item-title text-lg font-bold">Total Sales : </span>
-            <span class="dashboard-list-item-value text-2xl">Rs 50,000</span>
+          <div class="dashboard-list-item bg-gray-100 rounded-lg p-24 shadow">
+            <span class="dashboard-list-item-title text-lg font-bold" style="font-size: 35px;">Total Products : </span>
+            <span class="dashboard-list-item-value text-2xl" style="font-size: 50px;"><%= totalProducts %></span>
+          </div>
+        </li>
+        
+        <!-- Monthly and Total Sales -->
+        <li>
+          <div class="dashboard-list-item bg-gray-100 rounded-lg p-20 shadow">
+            <span class="dashboard-list-item-title text-lg font-bold" style="font-size: 35px;">Current Month Sales : </span>
+            <span class="dashboard-list-item-value text-2xl" style="font-size: 50px;">Rs 10,000</span>
           </div>
         </li>
         <li>
-          <div class="dashboard-list-item bg-gray-100 rounded-lg p-4 shadow">
-            <span class="dashboard-list-item-title text-lg font-bold">Current Monthly Sales : </span>
-            <span class="dashboard-list-item-value text-2xl">Rs 10,000</span>
+          <div class="dashboard-list-item bg-gray-100 rounded-lg p-20 shadow">
+            <span class="dashboard-list-item-title text-lg font-bold" style="font-size: 35px;">Total Sales : </span>
+            <span class="dashboard-list-item-value text-2xl" style="font-size: 50px;">Rs 50,000</span>
           </div>
         </li>
-        <li>
-          <div class="dashboard-list-item bg-gray-100 rounded-lg p-4 shadow">
-            <span class="dashboard-list-item-title text-lg font-bold">New Users : </span>
-            <span class="dashboard-list-item-value text-2xl"><%= totalUsers %></span>
-          </div>
-        </li>
+
       </ul>
     </main>
 

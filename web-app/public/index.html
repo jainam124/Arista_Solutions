@@ -60,13 +60,53 @@
             <button class="btn btn-danger" type="">Login</button>
           </a>           -->
           <a href="login.html" class="mx-10">
-            <button class="hover:bg-red-500 bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-red-700 rounded-2xl">
-            Login 
+            <button id="logButton" class="hover:bg-red-500 bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-red-700 rounded-2xl">
+              Login
             </button>
          </a>
         </div>
       </div>   
     </div>
+    <script>
+        const logoutButton = document.getElementById('logButton');
+
+        logoutButton.addEventListener('click', function() {
+          // Make AJAX request to /logout endpoint
+          fetch('/logout', { method: 'GET' })
+            .then(response => {
+              // Handle response as needed
+              //console.log('Logout successful');
+              // Redirect to a new page, clear session, etc.
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
+        });
+
+
+        const button = document.getElementById('logButton');
+
+        // Function to change the button text based on the login status
+        function changeButtonText() {
+          //while(true){
+            fetch('/isLoggedIn')
+              .then(response => response.json())
+              .then(data => {
+                if (data.isLoggedIn) {
+                  button.textContent = 'Logout';
+                } else {
+                  button.textContent = 'Login';
+                }
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+          //}
+        }
+        // Call the function initially to set the button text
+        setInterval(changeButtonText, 100);
+        //changeButtonText();
+    </script>
       <!------------------------------------------------------------------- Navbar ends --------------------------------------------------------------- -->
     
 

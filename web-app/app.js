@@ -34,13 +34,17 @@ const pool = mysql.createPool({
 });
 
 //REGISTER
+
+
 app.post('/register', (req, res) => {
+  const name = req.body.name;
+  const phone = req.body.phone;
   const username = req.body.username;
   const password = req.body.password;
 
   pool.getConnection((err, connection) => {
     if (err) throw err;
-    connection.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, password], (err, result) => {
+    connection.query('INSERT INTO users (name, phone, username, password) VALUES (?, ?, ?, ?)', [name, phone, username, password], (err, result) => {
       connection.release();
       if (err) throw err;
       console.log('User registered');
@@ -656,6 +660,46 @@ app.post('/submit-order', (req, res) => {
 
     console.log('Order stored successfully!');
     res.status(200).send('Order stored successfully');
+  });
+});
+
+//ADMIN-MANAGE USERS
+// Route to display the user list
+app.get('/users', (req, res) => {
+  // Fetch users from the database
+  pool.query('SELECT * FROM users', (error, results) => {
+    if (error) throw error;
+    res.render('users', { users: results });
+  });
+});
+
+// Route to handle delete request
+app.post('/delete/:username', (req, res) => {
+  const username = req.params.username;
+
+  // Display confirmation dialog using JavaScript's alert
+  const confirmation = `
+    <script>
+      var confirmed = confirm("Are you sure you want to delete the user?");
+      if (confirmed) {
+        window.location.href = "/delete/confirmed/${username}";
+      } else {
+        window.location.href = "/";
+      }
+    </script>
+  `;
+
+  res.send(confirmation);
+});
+
+// Route to handle confirmed delete request
+app.get('/delete/confirmed/:username', (req, res) => {
+  const username = req.params.username;
+
+  // Delete the user from the database
+  pool.query('DELETE FROM users WHERE username = ?', [username], (error, result) => {
+    if (error) throw error;
+    res.redirect('/users');
   });
 });
 

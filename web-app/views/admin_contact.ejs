@@ -58,6 +58,7 @@
               <a href="/users"  class="px-6 py-3 rounded-3xl text-md font-medium text-white bg-indigo-600 focus:outline-none focus:text-black focus:bg-red-500">Manage Users</a>
               <a href="pdf.html" class="ml-4 px-4 py-3 rounded-3xl text-md font-medium text-white hover:bg-red-500 focus:outline-none focus:text-black focus:bg-red-500">Upload PDF</a>
               <a href="product.html" class="ml-4 px-4 py-3 rounded-3xl text-md font-medium text-white hover:bg-red-500 focus:outline-none focus:text-black focus:bg-red-500">Add Products</a>	              
+              <a href="/admin_contact"  class="px-6 py-3 rounded-3xl text-md font-medium text-white bg-indigo-600 focus:outline-none focus:text-black focus:bg-red-500">Messages</a>
               <a href="login.html" class="ml-64 px-4 py-3 rounded-md text-md font-medium text-white hover:text-white bg-red-500 focus:outline-none focus:text-white focus:bg-red-500">
                 Admin
               </a>         
@@ -126,24 +127,22 @@ tr:nth-child(even) {
 </head>
 <body>
   <div class="user" style="padding: 20px;">
-  <b><h1 style="font-family: 'Kanit', sans-serif;">Users List</h1></b>
+  <b><h1 style="font-family: 'Kanit', sans-serif;">List of Messages</h1></b>
   <div class="user-table"  style="border-radius: 25px;">
   <table>
     <tr>
       <th>Name</th>
-      <th>Phone</th>
-      <th>Username</th>
-      <th>Password</th>
+      <th>Email</th>
+      <th>Message</th>
       <th>Action</th>
     </tr>
-    <% users.forEach(function(user) { %>
+    <% contact.forEach(function(con) { %>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.phone %></td>
-        <td><%= user.username %></td>
-        <td><%= user.password %></td>
+        <td><%= con.name %></td>
+        <td><%= con.email %></td>
+        <td><%= con.message %></td>
         <td>
-          <form action="/delete/<%= user.username %>" method="POST">
+          <form action="/delete/<%= con.email %>" method="POST">
             <button class="delete-button" type="submit">Delete</button>
           </form>
         </td>

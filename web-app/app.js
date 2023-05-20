@@ -34,8 +34,6 @@ const pool = mysql.createPool({
 });
 
 //REGISTER
-
-
 app.post('/register', (req, res) => {
   const name = req.body.name;
   const phone = req.body.phone;
@@ -44,15 +42,38 @@ app.post('/register', (req, res) => {
 
   pool.getConnection((err, connection) => {
     if (err) throw err;
-    connection.query('INSERT INTO users (name, phone, username, password) VALUES (?, ?, ?, ?)', [name, phone, username, password], (err, result) => {
-      connection.release();
-      if (err) throw err;
-      console.log('User registered');
-      //res.send('User registered');
-      res.redirect('/login.html');
+
+    // Check if the username already exists in the database
+    connection.query('SELECT * FROM users WHERE username = ?', [username], (err, rows) => {
+      if (err) {
+        connection.release();
+        throw err;
+      }
+
+      if (rows.length > 0) {
+        // Username already exists, send alert message
+        res.send(`
+          <script>
+            alert('Email already registered');
+            setTimeout(function() {
+              window.location.href = 'login.html';
+            }, 50); // Set a delay of 5 seconds before redirecting
+          </script>
+        `);
+      } else {
+        // Insert the new user into the database
+        connection.query('INSERT INTO users (name, phone, username, password) VALUES (?, ?, ?, ?)', [name, phone, username, password], (err, result) => {
+          connection.release();
+          if (err) throw err;
+          console.log('User registered');
+          //res.send('User registered');
+          res.redirect('/login.html');
+        });
+      }
     });
   });
 });
+
 
 // // LOGIN
 // app.post('/login', (req, res) => {

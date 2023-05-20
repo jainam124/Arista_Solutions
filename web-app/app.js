@@ -460,6 +460,19 @@ app.get('/dashboard', (req, res) => {
   });
 });
 
+app.get('/isLoggedIn', (req, res) => {
+  if (req.session.isLoggedIn) {
+    res.json({ isLoggedIn: true });
+  } else {
+    res.json({ isLoggedIn: false });
+  }
+});
+
+app.get('/logout', (req, res) => {
+    req.session.isLoggedIn = false;
+    res.json({ isLoggedIn: false });
+});
+
 /*app.get('/index', (req, res) => {
   res.send(html);
 });*/

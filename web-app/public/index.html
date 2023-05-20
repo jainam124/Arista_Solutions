@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Arista Solutions</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,11 +27,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
    
-    <title>Arista Solutions</title>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 </head>
+
 <body>
 
     <!------------------------------------------------------------------- Navbar starts --------------------------------------------------------------- -->
@@ -38,6 +37,7 @@
       <div class="md:flex md:flex-row md:justify-between text-center text-sm sm:text-base">
         <div class="flex flex-row justify-center">
           <div class="rounded-lg">
+            <!-- Arista logo -->
               <a href="index.html">
                   <img
                     class="mx-auto w-48 hover:shadow-lg transition duration-300 ease-in-out"
@@ -45,12 +45,12 @@
                     alt="logo"
                   />
               </a>
-          </div>
+          </div>      
           <a href="index.html">
               <h1 class="text-3xl hover:text-red-600 text-gray-600 mt-12 ml-14 hover:shadow-lg transition duration-300 ease-in-out">Arista Solutions</h1>
           </a>        
         </div>
-    
+        <!-- nav tags -->
         <div class="mt-14">
           <a href="index.html" class="text-red-600 p-4 px-3 sm:px-7 shadow-lg transition duration-300 ease-in-out">Home</a>      
           <a href="/view_product" class="text-gray-600 hover:text-red-600 p-4 px-3 sm:px-5 hover:shadow-lg transition duration-300 ease-in-out">Products</a>
@@ -60,20 +60,62 @@
             <button class="btn btn-danger" type="">Login</button>
           </a>           -->
           <a href="login.html" class="mx-10">
-            <button class="hover:bg-red-500 bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-red-700 rounded-2xl">
-            Login 
+            <button id="logButton" class="hover:bg-red-500 bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-red-700 rounded-2xl">
+              Login
             </button>
          </a>
         </div>
       </div>   
     </div>
-      <!------------------------------------------------------------------- Navbar ends --------------------------------------------------------------- -->
+
+    <script>
+        const logoutButton = document.getElementById('logButton');
+
+        logoutButton.addEventListener('click', function() {
+          // Make AJAX request to /logout endpoint
+          fetch('/logout', { method: 'GET' })
+            .then(response => {
+              // Handle response as needed
+              //console.log('Logout successful');
+              // Redirect to a new page, clear session, etc.
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
+        });
+
+
+        const button = document.getElementById('logButton');
+
+        // Function to change the button text based on the login status
+        function changeButtonText() {
+          //while(true){
+            fetch('/isLoggedIn')
+              .then(response => response.json())
+              .then(data => {
+                if (data.isLoggedIn) {
+                  button.textContent = 'Logout';
+                } else {
+                  button.textContent = 'Login';
+                }
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+          //}
+        }
+        // Call the function initially to set the button text
+        setInterval(changeButtonText, 100);
+        //changeButtonText();
+    </script>
+
+<!------------------------------------------------------------------- Navbar ends --------------------------------------------------------------- -->
     
 
 
-      <!------------------------------------------------------------------- Carousel starts --------------------------------------------------------------- -->
+      <!-- Carousel starts -->
       <div id="myCarousel" class="mx-2 my-2 carousel slide" data-bs-ride="carousel">
-        <!-- Carousel indicators -->
+        <!-- indicators for carousel -->
         <ol class="carousel-indicators">
             <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
             <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
@@ -195,7 +237,22 @@
 </div>
 <!------------------------------------------------------------------- Latest news ends --------------------------------------------------------------- -->
 
-
+ <!-- Section: Design Block -->
+ <div class="rounded-lg shadow-lg mt-10 flex flex-row">
+  <div class="lg:w-3/5 w-full bg-gradient-to-r from-black to-purple-900 lg:from-black lg:via-purple-900 lg:to-transparent rounded-lg text-gray-100 p-12">
+    <div class="lg:w-1/2">
+      <h3 class="text-2xl font-extrabold mb-4">Subscribe to get our offers first</h3>
+      <p class="mb-4 leading-relaxed">Want to hear from us when we have new offers? Sign up for our newsletter and we'll email you every time we have new sale offers.</p>
+      <div>
+        <input type="email" placeholder="Enter email address" class="bg-slate-100 text-black placeholder-black px-4 py-3 w-full rounded-lg focus:outline-none mb-4" />
+        <button type="submit" class="bg-gradient-to-r from-red-500 to-yellow-300 py-3 rounded-lg w-full">Subscribe</button>
+      </div>
+    </div>
+  </div>
+  <div class="lg:w-2/5 w-full lg:flex lg:flex-row hidden">
+    <img src="images/arista_logo.jpg" class="h-96" />
+  </div>
+</div> <!-- Newsletter Section -->
 
 <div class="p-20">
 <div class="rounded-lg shadow-lg my-20 flex flex-row">

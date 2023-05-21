@@ -432,22 +432,38 @@ app.get('/dashboard', (req, res) => {
     if (error) {
       console.error('Error counting users:', error);
       res.status(500).send('Error counting users');
-    } else {
+    } 
+    else {
       const totalUsers = results[0].total_users;
+      
       //res.status(200).json({ totalUsers });
       pool.query('SELECT COUNT(*) AS total_products FROM products;', (error, results) => {
         if (error) {
           console.error('Error counting products:', error);
           res.status(500).send('Error counting products');
-        } else {
+        } 
+        else {
           const totalProducts = results[0].total_products;
           //res.status(200).json({ totalProducts });
-          res.render("dashboard",{totalUsers,totalProducts});
+          pool.query('SELECT COUNT(*) AS total_subscribers FROM newsletter;', (error, results) => {
+            if (error) {
+              console.error('Error counting total subscriptions:', error);
+              res.status(500).send('Error counting subscriptions!');
+            } 
+            else {
+              const totalSubscriptions = results[0].total_subscribers;
+
+          res.render("dashboard",{totalUsers,totalProducts,totalSubscriptions});
         }
       });
+      }
+    });
     }
   });
-});
+  }
+);
+
+
 
 app.get('/isLoggedIn', (req, res) => {
   if (req.session.isLoggedIn) {

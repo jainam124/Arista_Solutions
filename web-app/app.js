@@ -15,6 +15,8 @@ const fs = require('fs');
 
 const bcrypt = require('bcrypt');
 
+const nodemailer = require('nodemailer');
+
 //middleware for serving static file
 app.use(express.static("public"))
 
@@ -153,6 +155,8 @@ app.post('/login', (req, res) => {
         // If the user's credentials are valid, set the session variables and redirect to the home page
         req.session.loggedIn = true;
         req.session.username = username;
+
+        // app.js
         res.send(`
           <script>
             alert('Welcome ${username}!');
@@ -464,7 +468,7 @@ app.get('/dashboard', (req, res) => {
 );
 
 
-
+///
 app.get('/isLoggedIn', (req, res) => {
   if (req.session.isLoggedIn) {
     res.json({ isLoggedIn: true });
@@ -476,6 +480,12 @@ app.get('/isLoggedIn', (req, res) => {
 app.get('/logout', (req, res) => {
     req.session.isLoggedIn = false;
     res.json({ isLoggedIn: false });
+});
+
+// API endpoint to toggle the login/logout state
+app.get('/toggle', (req, res) => {
+  isLoggedIn = !isLoggedIn;
+  res.send(isLoggedIn ? 'Logged in' : 'Logged out');
 });
 
 //CONTACT
@@ -594,6 +604,68 @@ app.get('/delete2/confirmed/:email', (req, res) => {
   pool.query('DELETE FROM newsletter WHERE email = ?', [email], (error, result) => {
     if (error) throw error;
     res.redirect('/newsletter');
+  });
+});
+
+
+//CHECKOUT
+// Nodemailer configuration
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
+  auth: {
+    user: 'aristasolutions2019@gmail.com',
+    pass: 'yssxbqzzjpyfmdes',
+  },
+});
+
+// Parse URL-encoded bodies
+app.use(express.urlencoded({ extended: true }));
+
+// Serve the HTML form
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+
+// Handle form submission
+app.post('/submit', (req, res) => {
+  const { country, fullname, address1, address2, city, state, zip, phone, email, useBilling } = req.body;
+
+  // Get the current timestamp
+  const timestamp = new Date();
+
+  // Insert the data into the MySQL database
+  const query = `INSERT INTO orders (country, fullname, address1, address2, city, state, zip, phone, email, use_billing, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  const values = [country, fullname, address1, address2, city, state, zip, phone, email, useBilling ? 'Yes' : 'No', timestamp];
+
+  pool.query(query, values, (error, results) => {
+    if (error) {
+      console.error('Error storing data: ' + error.stack);
+      res.send('Error storing data. Please try again.');
+      return;
+    }
+
+    console.log('Data stored successfully!');
+
+    // Send email
+    const mailOptions = {
+      from: 'your_email@example.com',
+      to: email,
+      subject: 'Order placed successfully',
+      text: `Thank you for placing your order!\n\nOrder Details:\n\nCountry: ${country}\nFull Name: ${fullname}\nAddress Line 1: ${address1}\nAddress Line 2: ${address2}\nCity: ${city}\nState: ${state}\nZIP: ${zip}\nPhone Number: ${phone}\nEmail: ${email}\nUse Address for Billing: ${useBilling ? 'Yes' : 'No'}\nTimestamp: ${timestamp}`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email: ' + error.stack);
+        res.send('Error sending email. Please check your email address and try again.');
+        return;
+      }
+
+      console.log('Email sent successfully!');
+      res.send('Order placed successfully. An email confirmation has been sent.');
+    });
   });
 });
 

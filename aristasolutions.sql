@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2023 at 09:10 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: May 22, 2023 at 04:14 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,7 +38,10 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`name`, `email`, `message`) VALUES
-('Ved Bulsara', 'vedbulsara7@gmail.com', 'Great service by Arista Solutions. Awesome!');
+('Ved Bulsara', 'vedbulsara9@gmail.com', 'Awesome customer service'),
+('Ved Bulsara', 'vedbulsara7@gmail.com', 'Product Quality is excellent!'),
+('Jainam Sheth', 'jainamsheth124@gmail.com', 'Can you please send me the discounted quotation for fire-extinguishers?'),
+('Raj Nandurkar', 'rajnandurkar2020@gmail.com', 'Can I get product delivered within 2 days?');
 
 -- --------------------------------------------------------
 
@@ -76,12 +79,7 @@ CREATE TABLE `newsletter` (
 --
 
 INSERT INTO `newsletter` (`email`) VALUES
-('jainamsheth124@gmail.com'),
-('vedbulsara7@gmail.com'),
-('jainamsheth124@gmail.com'),
 ('vedbulsara9@gmail.com'),
-('jainamsheth124@gmail.com'),
-('jainamsheth124@gmail.com'),
 ('vedbulsara7@gmail.com'),
 ('jainamsheth124@gmail.com');
 
@@ -117,9 +115,8 @@ CREATE TABLE `pdfs` (
 --
 
 INSERT INTO `pdfs` (`id`, `name`, `mimetype`, `file`) VALUES
-(1, 'Lab_Man_E-Commerce_190917 Final (1) (1).pdf', 'application/pdf', '0f20250a51b19300487e4ab799d350b6'),
-(2, 'ISS_PT2_QB_may2023.pdf', 'application/pdf', 'a725b85dadf7b6143dac1cd6a6b556bb'),
-(3, 'ISS PT1 QB_merged-1-31.pdf', 'application/pdf', 'd93b5a3e02667721e01597dd05c20afc');
+(9, 'Git_github_coursecert_ved.pdf', 'application/pdf', '062c495bfc12967f891a297f90d47e77'),
+(10, 'Cert_of_Appreciation(BGD).pdf', 'application/pdf', '62aa7230a0fa96d625808d313e24a8a6');
 
 -- --------------------------------------------------------
 
@@ -194,7 +191,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`name`, `phone`, `username`, `password`) VALUES
 ('Ved Bulsara', '1234567890', 'vedbulsara9@gmail.com', 'ved'),
-('Jainam Sheth', '1234567900', 'jainamsheth124@gmail.com', 'jainam');
+('Jainam Sheth', '1234567900', 'jainamsheth124@gmail.com', 'jainam'),
+('John Wick', '1111111111', 'jwick@gmail.com', 'jwick04'),
+('Ved Bulsara', '99999999999', 'vedbulsara@proton.me', 'ved123'),
+('Ved Bulsara', '7777777777', 'networked04@gmail.com', 'ved04');
 
 --
 -- Indexes for dumped tables
@@ -244,7 +244,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `pdfs`
 --
 ALTER TABLE `pdfs`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `products`

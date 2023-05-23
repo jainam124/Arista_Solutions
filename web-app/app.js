@@ -664,8 +664,15 @@ app.post('/submit', (req, res) => {
       }
 
       console.log('Email sent successfully!');
-      res.send('Order placed successfully. An email confirmation has been sent.');
-    });
+      res.send(`
+          <script>
+            alert('Email sent successfully...Now you can process your payment');
+            setTimeout(function() {
+              window.location.href = 'checkout.html';
+            }, 50); // Set a delay of 5 seconds before redirecting
+          </script>
+        `);
+      });
   });
 });
 

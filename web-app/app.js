@@ -623,9 +623,20 @@ const transporter = nodemailer.createTransport({
 // Parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
 
+// Enable sessions
+app.use(
+  session({
+    secret: 'your_secret_key',
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
 // Serve the HTML form
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  const { country, fullname, address1, address2, city, state, zip, phone, email, useBilling } = req.session.formData || {};
+
+  res.render('index', { country, fullname, address1, address2, city, state, zip, phone, email, useBilling });
 });
 
 // Handle form submission
@@ -635,9 +646,35 @@ app.post('/submit', (req, res) => {
   // Get the current timestamp
   const timestamp = new Date();
 
+  // Store the form data in the session
+  req.session.formData = {
+    country,
+    fullname,
+    address1,
+    address2,
+    city,
+    state,
+    zip,
+    phone,
+    email,
+    useBilling,
+  };
+
   // Insert the data into the MySQL database
   const query = `INSERT INTO orders (country, fullname, address1, address2, city, state, zip, phone, email, use_billing, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-  const values = [country, fullname, address1, address2, city, state, zip, phone, email, useBilling ? 'Yes' : 'No', timestamp];
+  const values = [
+    country,
+    fullname,
+    address1,
+    address2,
+    city,
+    state,
+    zip,
+    phone,
+    email,
+    useBilling ? 'Yes' : 'No',
+    timestamp,
+  ];
 
   pool.query(query, values, (error, results) => {
     if (error) {
@@ -653,7 +690,9 @@ app.post('/submit', (req, res) => {
       from: 'your_email@example.com',
       to: email,
       subject: 'Order placed successfully',
-      text: `Thank you for placing your order!\n\nOrder Details:\n\nCountry: ${country}\nFull Name: ${fullname}\nAddress Line 1: ${address1}\nAddress Line 2: ${address2}\nCity: ${city}\nState: ${state}\nZIP: ${zip}\nPhone Number: ${phone}\nEmail: ${email}\nUse Address for Billing: ${useBilling ? 'Yes' : 'No'}\nTimestamp: ${timestamp}`,
+      text: `Thank you for placing your order!\n\nOrder Details:\n\nCountry: ${country}\nFull Name: ${fullname}\nAddress Line 1: ${address1}\nAddress Line 2: ${address2}\nCity: ${city}\nState: ${state}\nZIP: ${zip}\nPhone Number: ${phone}\nEmail: ${email}\nUse Address for Billing: ${
+        useBilling ? 'Yes' : 'No'
+      }\nTimestamp: ${timestamp}`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -664,7 +703,14 @@ app.post('/submit', (req, res) => {
       }
 
       console.log('Email sent successfully!');
-      res.send('Order placed successfully. An email confirmation has been sent.');
+      res.send(`
+          <script>
+            alert('Email sent successfully...Now you can process your payment');
+            setTimeout(function() {
+              window.location.href = 'checkout.html';
+            }, 50); // Set a delay of 5 seconds before redirecting
+          </script>
+        `);
     });
   });
 });

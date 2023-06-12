@@ -25,6 +25,7 @@
     "google-auth-library": "^8.8.0",
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
+    "nodemailer": "^6.9.2",
     "passport": "^0.6.0",
     "passport-google-oauth": "^2.0.0",
     "path": "^0.12.7",

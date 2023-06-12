@@ -83,9 +83,17 @@ npm install google-auth-library
 ---
 
 ## After Installing all dependencies,
-### Type this command :
+>-  Create a Database "aristasolutions" with phpyadmin.
+>-  Import the "aristasolutions.sql" file inside the database.
+>-  All the Tables and their records will be imported.
+
+>-  Type this command on your terminal inside the project directory :
 
 ```
 npm run start
 ```
-> This command will initiate a script to run the web-app on localhost:3000
+>-  This command will initiate a script to run the web-app on localhost:3000
+
+>- Open a web-browser and type localhost:3000 or 127.0.0.1:3000
+
+---

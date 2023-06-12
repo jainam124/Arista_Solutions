@@ -61,21 +61,24 @@
     </div>
   </div>  
 <!------------------------------------------------------------------- Navbar ends --------------------------------------------------------------- -->                     
+
+<!-- Table for products  -->
 <div class="col-md-4 mx-72 mt-14" style="width: 79%;margin-left: 10.5%;">
     <div class="card" style="border:none">
         <div class="card-header" style="background-color: #89c6ff;border-radius: 40px;padding: 40px;font-size: 50px;color: #033156;"><b>Shopping Cart</b></div>
         <div class="card-body" style="
-        background-color: #e2f1ff;
+        background-color: #c4e2ff;
         margin-top: 20px;
-        border-radius: 28px;">
+        border-radius: 28px;
+        ">
             <table class="table">
                 
                 <tr>
                     <th>Item Name</th>
                     <th>Quantity</th>
                     <th>Unit Price</th>
-                    <th>Total Price</th>
-                    <th>Remove</th>
+                    <th>(₹) Total Price</th>
+                    <th>Remove products</th>
                 </tr>
                 <% 
                 if (cart.length > 0) {
@@ -90,7 +93,7 @@
                     <td>
                         <div class="quantity-container">
                             <button class="quantity-btn" onclick="changeQuantity('<%= item.id %>', '-')">-</button>
-                            <input type="number" id="quantity-<%= item.id %>" class="quantity-input" style="text-align: center;" value="<%= item.quantity %>" data-price="<%= item.price %>">
+                            <input type="number" id="quantity-<%= item.id %>" class="quantity-input" style="text-align: center;background-color: #e0f0ff;border-radius: 50px;" value="<%= item.quantity %>" data-price="<%= item.price %>">
                             <button class="quantity-btn" onclick="changeQuantity('<%= item.id %>', '+')">+</button>
                         </div>
                     </td>
@@ -121,15 +124,20 @@
         </div>
     </div>
 </div>
+<!-- Table for products ends -->
+
+<!-- Pay with Razorpay button
 <div class="button-class">  
-    <button id="rzp-button1" class="w-56 mt-5 inline-block px-6 py-2.5 bg-blue-600 text-white font-medium 
+    <button id="rzp-button1" class="w-56 mt-20 inline-block px-6 py-2.5 bg-blue-600 text-white font-medium 
     text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700
     hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none 
     focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150
     ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light">Pay with Razorpay</button>  
 </div>
-</div>
+</div> -->
 
+
+<!-- Razorpay test mode logic -->
 <script>
 function remove_item(item_id) {
     if (confirm("Are you sure you want to remove it?")) {
@@ -172,16 +180,18 @@ function updateTotal(itemId) {
 }
 </script>
 
-<div>
-    <a href="/cart" class="mx-4 hover:bg-red-500 bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-red-700  rounded-2xl">
+<div class = "checkout" style="text-align: center; padding: 50px;">
+    <a href="/checkout.html" class="mx-4 hover:bg-red-500 bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-red-700  rounded-2xl">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
             Proceed to Checkout</a>
-</div>
+        </div>
+        </div> 
 
 
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         var orderId;
@@ -248,5 +258,7 @@ function updateTotal(itemId) {
             }
         });
     </script>
+Razorpay test mode logic ends -->
+
 </body>
 </html>

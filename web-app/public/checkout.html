@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/arista_logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+    <link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <title>Your Cart</title>
+    <style>
+      .button-class{
+        display: flex;
+        justify-content: center;
+      }
+      .button-class button{
+          /* width: 100%; */
+          font-size: 17px;
+      }
+      .card-body table button{
+        border: 1px black;
+      }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: hsl(0, 0%, 20%);
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    .form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #0066cc;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #0066cc;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #cccccc;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: #0066cc;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0052a3;
+    }
+  </style>
+</head>
+<body>
+    <div class="form">
+      <b><h1 style="font-size: 30px;">Order Form</h1></b>
+      <form action="/submit" method="POST">
+        <b><label for="country">Country:</label></b>
+        <input type="text" id="country" name="country" style="
+        border-radius: 30px;
+    "required><br><br>
+  
+  <b><label for="fullname">Full Name:</label></b>
+        <input type="text" id="fullname" name="fullname"style="
+        border-radius: 30px;
+    " required><br><br>
+  
+  <b><label for="address1">Address Line 1:</label></b>
+        <input type="text" id="address1" name="address1" style="
+        border-radius: 30px;
+    "required><br><br>
+  
+  <b><label for="address2">Address Line 2:</label></b>
+        <input type="text" id="address2" name="address2" style="
+        border-radius: 30px;
+    "><br><br>
+  
+  <b><label for="city">City:</label></b>
+        <input type="text" id="city" name="city"  style="
+        border-radius: 30px;
+    "required><br><br>
+  
+  <b><label for="state">State:</label></b>
+        <input type="text" id="state" name="state" style="
+        border-radius: 30px;
+    "required><br><br>
+  
+  <b><label for="zip">ZIP:</label></b>
+        <input type="text" id="zip" name="zip" style="
+        border-radius: 30px;
+    "required><br><br>
+  
+  <b><label for="phone">Phone Number:</label></b>
+        <input type="text" id="phone" name="phone"style="
+        border-radius: 30px;
+    " required><br><br>
+  
+  <b><label for="email">Email:</label></b>
+        <input type="email" id="email" name="email" style="
+        border-radius: 30px;
+    "required><br><br>
+  
+  <div style="display: flex;">
+        <input type="checkbox" id="useBilling" name="useBilling">
+        <b><label for="useBilling">Use Address for Billing</label></b><br><br>
+      </div>
+        <!-- Pay with Razorpay button -->
+
+        <div style="text-align: center; padding-bottom: 20px;">
+        <input type="submit" value="Submit" style="border-radius: 17px;">
+    </div>
+
+<div class="button-class">  
+    <button id="rzp-button1" class="w-56 inline-block px-6 py-3 bg-blue-600 text-white font-medium 
+    text-xs leading-tight uppercase rounded-3xl shadow-md hover:bg-blue-700
+    hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none 
+    focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150
+    ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light">Pay with Razorpay</button>  
+</div>
+      </form>
+    </div>
+
+
+</div>
+
+<!-- Razorpay test mode logic -->
+<script>
+    function remove_item(item_id) {
+        if (confirm("Are you sure you want to remove it?")) {
+            window.location.href = `/remove_item?id=${item_id}`;
+        }
+    }
+    
+    function changeQuantity(itemId, operation) {
+        const quantityInput = document.querySelector(`#quantity-${itemId}`);
+        let quantity = parseInt(quantityInput.value);
+    
+        if (operation === '+' && quantity < 99) {
+            quantity++;
+        } else if (operation === '-' && quantity > 1) {
+            quantity--;
+        }
+    
+        quantityInput.value = quantity;
+        updateTotal(itemId);
+    }
+    
+    function updateTotal(itemId) {
+        const quantityInput = document.querySelector(`#quantity-${itemId}`);
+        const itemTotalElement = document.querySelector(`#item-total-${itemId}`);
+        const overallTotalElement = document.querySelector("#overall-total");
+    
+        const quantity = parseInt(quantityInput.value);
+        const price = parseFloat(quantityInput.getAttribute("data-price"));
+        const itemTotal = quantity * price;
+    
+        itemTotalElement.innerText = itemTotal.toFixed(2);
+    
+        let overallTotal = 0;
+        const itemTotals = document.querySelectorAll('[id^="item-total-"]');
+        itemTotals.forEach(itemTotal => {
+            overallTotal += parseFloat(itemTotal.innerText);
+        });
+    
+        overallTotalElement.innerText = overallTotal.toFixed(2);
+    }
+    </script>
+    
+    <!-- 
+        <a href="/cart" class="mx-4 hover:bg-red-500 bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-red-700  rounded-2xl">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                Proceed to Checkout</a>
+    </div>  -->
+    
+    
+    
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            var orderId;
+            $(document).ready(function(){
+                var settings = {
+                    "url": "/creat/orderId",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "data": JSON.stringify({
+                        "amount": "50000"
+                    }),
+                };
+    
+                document.getElementById('rzp-button1').onclick = function(e){
+                    var options = {
+                        "key": "rzp_test_MTb4gbqL1Kk03S", // Enter the Key ID generated from the Dashboard
+                        "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                        "currency": "INR",
+                        "name": "Fire Alarm",
+                        "description": "Test Transaction Text",
+                        "image": "https://example.com/your_logo",
+                        "order_id": orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                        "handler": function (response){
+                            alert(response.razorpay_payment_id);
+                            alert(response.razorpay_order_id);
+                            alert(response.razorpay_signature)
+    
+                            var settings = {
+                                "url": "/api/payment/verify",
+                                "method": "POST",
+                                "timeout": 0,
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "data": JSON.stringify({response}),
+                            };
+                            //creates new orderId everytime
+                            $.ajax(settings).done(function(response){
+                                // orderId=response.orderId;
+                                // console.log(orderId);
+                                // $("button").show();
+                                alert(JSON.stringify(response));
+                            });
+                        },
+                        "theme": {
+                            "color": "#99cc33"
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.on('payment.failed', function (response){
+                            alert(response.error.code);
+                            alert(response.error.description);
+                            alert(response.error.source);
+                            alert(response.error.step);
+                            alert(response.error.reason);
+                            alert(response.error.metadata.order_id);
+                            alert(response.error.metadata.payment_id);
+                    });
+                    rzp1.open();
+                    e.preventDefault();
+                }
+            });
+        </script>
+    <!-- Razorpay test mode logic ends-->    
+
+</body>
+</html>

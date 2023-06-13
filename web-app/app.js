@@ -4,6 +4,9 @@ const session = require("express-session");
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 
+const axios = require('axios');
+const cron = require('node-cron');
+
 const app = express();
 
 const path = require("path");
@@ -24,6 +27,38 @@ app.get("/", function(req, res){
     res.sendFile(path.join(__dirname + '/index.html'));
     res.send('<img src = "/images/arista_logo.jpg">')
 })
+
+
+///
+const crypto = require('crypto');
+
+const secret = crypto.randomBytes(32).toString('hex');
+console.log(secret); // prints a random 64-character string
+
+app.use(express.static('public'));
+app.use(session({
+  secret: secret,
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.get('/isLoggedIn', (req, res) => {
+  if (req.session && req.session.isLoggedIn) {
+    res.json({ isLoggedIn: true });
+  } else {
+    res.json({ isLoggedIn: false });
+  }
+});
+
+app.get('/logout', (req, res) => {
+  req.session.isLoggedIn = false;
+  res.json({ isLoggedIn: false });
+});
+// // API endpoint to toggle the login/logout state
+// app.get('/toggle', (req, res) => {
+//   isLoggedIn = !isLoggedIn;
+//   res.send(isLoggedIn ? 'Logged in' : 'Logged out');
+// });
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -106,10 +141,9 @@ app.post('/register', (req, res) => {
 // });
 
 /////////
-const crypto = require('crypto');
 
-const secret = crypto.randomBytes(32).toString('hex');
-console.log(secret); // prints a random 64-character string
+// const secret = crypto.randomBytes(32).toString('hex');
+// console.log(secret); // prints a random 64-character string
 
 app.use(session({
   secret: secret,
@@ -168,12 +202,12 @@ app.post('/login', (req, res) => {
       } else {
         // If the user's credentials are not valid, show an error message
         res.send(`
-          <html>
-            <body>
-              <h1>Invalid credentials</h1>
-              <p>Please enter valid credentials to log in</p>
-            </body>
-          </html>
+          <script>
+            alert('Invalid Credentials....Try Entering Credetials again');
+            setTimeout(function() {
+              window.location.href = 'login.html';
+            }, 50); // Set a delay of 5 seconds before redirecting
+          </script>
         `);
       }
     });
@@ -468,26 +502,6 @@ app.get('/dashboard', (req, res) => {
 );
 
 
-///
-app.get('/isLoggedIn', (req, res) => {
-  if (req.session.isLoggedIn) {
-    res.json({ isLoggedIn: true });
-  } else {
-    res.json({ isLoggedIn: false });
-  }
-});
-
-app.get('/logout', (req, res) => {
-    req.session.isLoggedIn = false;
-    res.json({ isLoggedIn: false });
-});
-
-// API endpoint to toggle the login/logout state
-app.get('/toggle', (req, res) => {
-  isLoggedIn = !isLoggedIn;
-  res.send(isLoggedIn ? 'Logged in' : 'Logged out');
-});
-
 //CONTACT
 app.post('/contact', (req, res) => {
   const name = req.body.name;
@@ -623,14 +637,14 @@ const transporter = nodemailer.createTransport({
 // Parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
 
-// Enable sessions
-app.use(
-  session({
-    secret: 'your_secret_key',
-    resave: false,
-    saveUninitialized: true,
-  })
-);
+// // Enable sessions
+// app.use(
+//   session({
+//     secret: 'your_secret_key',
+//     resave: false,
+//     saveUninitialized: true,
+//   })
+// );
 
 // Serve the HTML form
 app.get('/', (req, res) => {
@@ -715,6 +729,61 @@ app.post('/submit', (req, res) => {
   });
 });
 
+//LATEST NEWS - GOOGLE NEWS API
+
+
+//UPDATE PASSWORD
+// Handle POST request to update password
+app.post('/updatePassword', (req, res) => {
+  const { username, password, confirmPassword } = req.body;
+
+  // Check if passwords match
+  if (password !== confirmPassword) {
+    return res.send(`
+    <script>
+      alert('Passwords do not match');
+      setTimeout(function() {
+        window.location.href = 'forgot.html';
+      }, 50); // Set a delay of 5 seconds before redirecting
+    </script>
+  `);
+  }
+
+  // Query the database to check if the username exists
+  const query = `SELECT * FROM users WHERE username = ?`;
+  pool.query(query, [username], (err, results) => {
+    if (err) {
+      throw err;
+    }
+
+    // If username exists, update the password
+    if (results.length > 0) {
+      const updateQuery = `UPDATE users SET password = ? WHERE username = ?`;
+      pool.query(updateQuery, [password, username], (err, _) => {
+        if (err) {
+          throw err;
+        }
+        res.send(`
+          <script>
+            alert('Passwords updated successfully for Username: ${username}!');
+            setTimeout(function() {
+              window.location.href = 'login.html';
+            }, 50); // Set a delay of 5 seconds before redirecting
+          </script>
+        `);
+      });
+    } else {
+      res.send(`
+          <script>
+            alert('Username does not exist');
+            setTimeout(function() {
+              window.location.href = 'forgot.html';
+            }, 50); // Set a delay of 5 seconds before redirecting
+          </script>
+        `);
+    }
+  });
+});
 
 app.listen(3000, () => {
     console.log('Server started on port 3000');    

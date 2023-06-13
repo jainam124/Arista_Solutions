@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/arista_logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">    
+    <title>Update Password</title>
+</head>
+
+<body style="
+height: 800px;
+background-color: lightgrey;
+">
+
+
+  <div style="        border-color: black;
+  /* width: 560px; */
+  height: 500px;
+  max-width: fit-content;
+  text-align: center;
+  padding-left: 620px;
+  padding-top: 100px;
+  border-color: black;
+  border-radius: 20px;">
+
+
+  <form action="/updatePassword" method="POST" style="
+      background-color: white;
+    padding: 100px;
+    padding-top: 170px;
+    padding-bottom: 130px;
+    border-radius: 45px;
+">
+    <section>
+    <center>
+        <p class="mb-7" style="font-family: 'Roboto', sans-serif; font-size: 27px;"><b>Update your password!</b></p>                           
+            
+                            <div class="mb-7">
+                              <input
+                                type="text"
+                                class="form-control block w-96 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                id="username"
+                                name="username"
+                                placeholder="E-mail" required
+                                style="
+    border-radius: 17px;
+"
+                              />
+                            </div>
+                            <div class="mb-7">
+                              <input
+                                type="password"
+                                class="form-control block w-96 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus: focus:bg-white focus:border-blue-600 focus:outline-none"
+                                id="password"
+                                name="password"
+                                placeholder="Enter New Password" required
+                                style="
+    border-radius: 17px;
+"
+                              />
+                            </div>
+                            <div class="mb-7">
+                                <input
+                                  type="confirmPassword"
+                                  class="form-control block w-96 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus: focus:bg-white focus:border-blue-600 focus:outline-none"
+                                  id="confirmPassword"
+                                  name="confirmPassword"
+                                  placeholder="Re-enter the password" required
+                                  style="
+    border-radius: 17px;
+"
+                                />
+                              </div>
+
+                            <div class="text-center pt-1 mb-12 pb-1">                              
+                              <button class="w-56 mt-3 inline-block px-6 py-2.5 bg-blue-600 text-white 
+                                        text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700
+                                        hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none 
+                                        focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150
+                                        ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light"
+                                  href="/web-app/public/index.html">                                  
+                                  <input type="submit" value="UPDATE PASSWORD"></button>
+                              </a> <br><br>                                                                                                                   
+                            </div>
+
+                          </form>
+                          
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </center>
+</body>
+</html>

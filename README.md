@@ -70,7 +70,7 @@ npm install body-parser path router
 ```
 
 ``` 
-npm install multer path fs ejs
+npm install multer path fs ejs axios
 ```
 
 ```

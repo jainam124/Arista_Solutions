@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2023 at 04:14 PM
+-- Generation Time: Jun 12, 2023 at 02:35 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -38,10 +38,9 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`name`, `email`, `message`) VALUES
-('Ved Bulsara', 'vedbulsara9@gmail.com', 'Awesome customer service'),
-('Ved Bulsara', 'vedbulsara7@gmail.com', 'Product Quality is excellent!'),
-('Jainam Sheth', 'jainamsheth124@gmail.com', 'Can you please send me the discounted quotation for fire-extinguishers?'),
-('Raj Nandurkar', 'rajnandurkar2020@gmail.com', 'Can I get product delivered within 2 days?');
+('Ved Bulsara', 'vedbulsara7@gmail.com', 'Excellent customer service!'),
+('Jainam Sheth', 'jainamsheth124@gmail.com', 'Product quality is impressive!'),
+('Raj Nandurkar', 'rajnandurkar2020@gmail.com', 'Do you provide product deliveries within 5 days?');
 
 -- --------------------------------------------------------
 
@@ -80,8 +79,9 @@ CREATE TABLE `newsletter` (
 
 INSERT INTO `newsletter` (`email`) VALUES
 ('vedbulsara9@gmail.com'),
-('vedbulsara7@gmail.com'),
-('jainamsheth124@gmail.com');
+('jainamsheth124@gmail.com'),
+('rajnandurkar2020@gmail.com'),
+('pina1900@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -90,12 +90,42 @@ INSERT INTO `newsletter` (`email`) VALUES
 --
 
 CREATE TABLE `orders` (
-  `sr_no` int(100) NOT NULL,
-  `itemName` varchar(100) NOT NULL,
-  `quantity` varchar(100) NOT NULL,
-  `unitPrice` varchar(100) NOT NULL,
-  `totalPrice` varchar(100) NOT NULL
+  `country` varchar(50) NOT NULL,
+  `fullname` varchar(50) NOT NULL,
+  `address1` varchar(100) NOT NULL,
+  `address2` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `state` varchar(100) NOT NULL,
+  `zip` int(100) NOT NULL,
+  `phone` int(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `use_billing` varchar(100) NOT NULL,
+  `timestamp` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`country`, `fullname`, `address1`, `address2`, `city`, `state`, `zip`, `phone`, `email`, `use_billing`, `timestamp`) VALUES
+('0', '0', '0', '0', '0', '0', 400067, 1234567890, '0', '0', '2023'),
+('0', '0', '0', '0', '0', '0', 400067, 1234567890, '0', '0', '2023'),
+('India', 'Jainam Sheth', 'asf', 'asdf', 'asdf', 'asdf', 400067, 1234567890, 'jainamsheth124@gmail.com', 'Yes', '2023-05-22 22:29:24.893'),
+('India', 'Jainam Sheth', 'asf', 'asdf', 'asdf', 'asdf', 400067, 1234567890, 'jainamsheth124@gmail.com', 'No', '2023-05-22 22:29:30.278'),
+('India', 'Jainam Sheth', 'asdf', 'asdf', 'asdf', 'asdf', 400067, 1234567890, 'jainamsheth124@gmail.com', 'No', '2023-05-22 22:50:27.128'),
+('India', 'Jash Parmar', 'gutter', 'gutter', 'Mumbai', 'Goa', 400067, 2147483647, 'daltonjd45@gmail.com', 'No', '2023-05-23 00:01:45.318'),
+('India', 'Jainam Sheth', 'asdf', 'asdf', 'asdf', 'asdf', 400067, 2147483647, 'vedbulsara9@gmail.com', 'No', '2023-05-23 00:24:07.415'),
+('India', 'Jainam Sheth', 'asf', 'asdf', 'Mumbai', 'Goa', 400067, 2147483647, 'jainamsheth124@gmail.com', 'No', '2023-05-23 00:52:31.601'),
+('India', 'Ved Bulsara', 'Tujhe kyu batau?', 'Tujhe kyu batau?', 'Mumbai', 'Maharashtra', 400067, 2147483647, 'vedbulsara9@gmail.com', 'No', '2023-05-23 11:04:02.937'),
+('India', 'Jainam Sheth', 'Dahanukarwadi', 'Kandivali West', 'Mumbai', 'Maharashtra', 400067, 2147483647, 'jainamsheth124@gmail.com', 'Yes', '2023-05-23 11:24:42.462'),
+('India', 'Jainam Sheth', 'Dahanukarwadi', 'Kandivali West', 'Mumbai', 'Maharashtra', 400067, 2147483647, 'jainamsheth124@gmail.com', 'No', '2023-05-23 11:25:15.335'),
+('India', 'Jainam Sheth', 'Dahanukarwadi', 'Kandivali West', 'Mumbai', 'Maharashtra', 400067, 2147483647, 'jainamsheth124@gmail.com', 'Yes', '2023-05-23 11:38:24.574'),
+('India', 'Ved Bulsara', 'Dahanukarwadi', 'Kandivali West', 'Mumbai', 'Maharashtra', 400067, 2147483647, 'jainamsheth124@gmail.com', 'Yes', '2023-05-23 15:00:19.392'),
+('India', 'Ved Bulsara', 'Charkop', 'Kandivali West', 'Mumbai', 'Maharashtra', 400067, 2147483647, 'vedbulsara7@gmail.com', 'Yes', '2023-05-23 20:16:05.818'),
+('India', 'Swarnima Khare', 'Irla', 'Vile Parle', 'Mumbai', 'Maharashtra', 400067, 2147483647, 'swarkhare@gmail.com', 'Yes', '2023-05-24 08:18:51.180'),
+('India', 'Nilesh Bulsara', 'Charkop', 'Kandivali West', 'Mumbai', 'Maharashtra', 400067, 2147483647, 'nbulsara24@yahoo.com', 'Yes', '2023-05-24 12:58:22.436'),
+('India', 'Nilesh Bulsara', 'Charkop', 'Kandivali West', 'Mumbai', 'Maharashtra', 400067, 2147483647, 'nbulsara9@gmail.com', 'Yes', '2023-05-24 12:59:45.368'),
+('India', 'Ved Bulsara', 'Charkop', 'Kandivali West', 'Mumbai', 'Maharashtra', 400067, 2147483647, 'vedbulsara7@gmail.com', 'Yes', '2023-06-10 15:49:43.371');
 
 -- --------------------------------------------------------
 
@@ -115,8 +145,10 @@ CREATE TABLE `pdfs` (
 --
 
 INSERT INTO `pdfs` (`id`, `name`, `mimetype`, `file`) VALUES
-(9, 'Git_github_coursecert_ved.pdf', 'application/pdf', '062c495bfc12967f891a297f90d47e77'),
-(10, 'Cert_of_Appreciation(BGD).pdf', 'application/pdf', '62aa7230a0fa96d625808d313e24a8a6');
+(9, 'Company Product catalogue.pdf', 'application/pdf', '9f5d25fd8250e4c803974a00c7848866'),
+(10, 'Micro Systems Presentation.pdf', 'application/pdf', '613946f3eff19d09f247900540861975'),
+(11, 'SigniFire System Brochure.pdf', 'application/pdf', '02a222678b4465120f0b4089d201e162'),
+(12, 'Certified Inert Gas System.pdf', 'application/pdf', '55ed2c8d61bf704b9f44a1c2012eb472');
 
 -- --------------------------------------------------------
 
@@ -190,11 +222,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`name`, `phone`, `username`, `password`) VALUES
-('Ved Bulsara', '1234567890', 'vedbulsara9@gmail.com', 'ved'),
-('Jainam Sheth', '1234567900', 'jainamsheth124@gmail.com', 'jainam'),
-('John Wick', '1111111111', 'jwick@gmail.com', 'jwick04'),
-('Ved Bulsara', '99999999999', 'vedbulsara@proton.me', 'ved123'),
-('Ved Bulsara', '7777777777', 'networked04@gmail.com', 'ved04');
+('Jainam Sheth', '09619221341', 'jainamsheth124@gmail.com', 'jainam124'),
+('Ved Bulsara', '07039522689', 'vedbulsara7@gmail.com', 'ved123'),
+('Raj Nandurkar', '9082721118', 'rajnandurkar2020@gmail.com', 'raj123'),
+('Pina ', '7777777777', 'pina1900@gmail.com', 'pina@123');
 
 --
 -- Indexes for dumped tables
@@ -205,12 +236,6 @@ INSERT INTO `users` (`name`, `phone`, `username`, `password`) VALUES
 --
 ALTER TABLE `items`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`sr_no`);
 
 --
 -- Indexes for table `pdfs`
@@ -235,22 +260,16 @@ ALTER TABLE `items`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `sr_no` int(100) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `pdfs`
 --
 ALTER TABLE `pdfs`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
